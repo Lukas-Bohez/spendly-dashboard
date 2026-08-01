@@ -22,33 +22,6 @@
   background-color: var(--color-bg-app);
 }
 
-/* ── Scroll Progress Indicator — FUTURE CSS: Scroll-Linked Animations ── */
-.scroll-progress {
-  position: sticky;
-  inset-block-start: 0;
-  z-index: var(--z-header);
-  inline-size: 100%;
-  block-size: 3px;
-  background: transparent;
-
-  & .scroll-progress__bar {
-    block-size: 100%;
-    background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-gradient-end));
-    border-radius: 0 2px 2px 0;
-
-    /* Sroll-Driven Animation: animation-timeline: scroll() koppelt 
-       de animatie aan de scrollpositie i.p.v. aan tijd */
-    animation: scroll-grow linear;
-    animation-timeline: scroll();
-    transform-origin: 0 50%;
-  }
-}
-
-@keyframes scroll-grow {
-  from { scale: 0 1; }
-  to   { scale: 1 1; }
-}
-
 /* Skip link */
 .skip-link {
   position: absolute;
