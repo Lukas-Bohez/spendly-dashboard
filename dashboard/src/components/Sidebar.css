@@ -232,6 +232,13 @@
   flex-shrink: 0;
 }
 
+.sidebar__no-results {
+  padding: var(--space-3);
+  font-size: var(--font-size-small);
+  color: var(--color-text-sidebar-muted);
+  text-align: center;
+}
+
 .sidebar__logout {
   display: flex;
   align-items: center;
@@ -259,13 +266,14 @@
     inset-block-start: 0;
     block-size: 100dvh;
     inline-size: 280px;
-    transition: inset-inline-start var(--transition-slow);
+    transition: translate var(--transition-slow);
     z-index: var(--z-modal);
     box-shadow: var(--shadow-lg);
+    translate: -280px 0;
   }
 
-  .sidebar--open {
-    inset-inline-start: 0;
+  .sidebar.sidebar--open {
+    translate: 0 0;
   }
 
   .sidebar-overlay {

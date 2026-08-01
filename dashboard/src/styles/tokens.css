@@ -260,13 +260,13 @@
   --color-chart-expense: var(--color-blue-400);
   --color-chart-profit: var(--color-blue-400);
   --color-chart-profit-today: var(--color-blue-500);
-  --color-chart-for-week: oklch(0.35 0.008 250);
+  --color-chart-for-week: oklch(0.42 0.01 250);
   --color-chart-vat: var(--color-blue-500);
   --color-chart-employee: var(--color-blue-400);
   --color-chart-services: oklch(0.75 0.06 250);
 
   --color-border-default: oklch(0.30 0.01 250);
-  --color-border-strong: oklch(0.38 0.012 250);
+  --color-border-strong: oklch(0.40 0.012 250);
   --color-border-light: oklch(0.24 0.008 250);
 
   --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.30);

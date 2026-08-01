@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import {
   Home, FileText, BarChart3, Receipt, Users, User, UserCircle,
   Settings, Shield, HelpCircle, LogOut, Search
@@ -26,6 +26,7 @@ const SUPPORT_ITEMS = [
 
 function Sidebar({ mobileOpen, onClose }) {
   const [activeItem, setActiveItem] = useState('dashboard');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleNavClick = useCallback((id) => {
     setActiveItem(id);
@@ -35,6 +36,45 @@ function Sidebar({ mobileOpen, onClose }) {
   const handleKeyDown = useCallback((e) => {
     if (e.key === 'Escape' && mobileOpen) onClose();
   }, [mobileOpen, onClose]);
+
+  const filterItems = (items) => {
+    if (!searchQuery.trim()) return items;
+    const q = searchQuery.toLowerCase();
+    return items.filter(item => item.label.toLowerCase().includes(q));
+  };
+
+  const filteredMenu = useMemo(() => filterItems(MENU_ITEMS), [searchQuery]);
+  const filteredAccount = useMemo(() => filterItems(ACCOUNT_ITEMS), [searchQuery]);
+  const filteredSupport = useMemo(() => filterItems(SUPPORT_ITEMS), [searchQuery]);
+  const hasResults = filteredMenu.length > 0 || filteredAccount.length > 0 || filteredSupport.length > 0;
+
+  const renderSection = (label, items) => {
+    if (items.length === 0) return null;
+    return (
+      <div className="sidebar__section">
+        <span className="sidebar__section-label">{label}</span>
+        <ul className="sidebar__nav-list">
+          {items.map((item) => {
+            const Icon = item.icon;
+            return (
+              <li key={item.id}>
+                <button
+                  className={`sidebar__nav-item ${activeItem === item.id ? 'sidebar__nav-item--active' : ''}`}
+                  onClick={() => handleNavClick(item.id)}
+                  aria-current={activeItem === item.id ? 'page' : undefined}
+                  type="button"
+                >
+                  <Icon className="sidebar__nav-icon" size={18} />
+                  <span className="sidebar__nav-label">{item.label}</span>
+                  {item.badge && <span className="sidebar__nav-badge">{item.badge}</span>}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -55,67 +95,24 @@ function Sidebar({ mobileOpen, onClose }) {
 
         <div className="sidebar__search">
           <Search className="sidebar__search-icon" size={16} />
-          <input type="text" placeholder="Search" className="sidebar__search-input" aria-label="Zoeken" />
+          <input
+            type="text"
+            placeholder="Search"
+            className="sidebar__search-input"
+            aria-label="Zoeken"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <span className="sidebar__search-shortcut" aria-hidden="true">⌘F</span>
         </div>
 
         <nav className="sidebar__nav">
-          <div className="sidebar__section">
-            <span className="sidebar__section-label">MENU</span>
-            <ul className="sidebar__nav-list">
-              {MENU_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.id}>
-                    <button
-                      className={`sidebar__nav-item ${activeItem === item.id ? 'sidebar__nav-item--active' : ''}`}
-                      onClick={() => handleNavClick(item.id)}
-                      aria-current={activeItem === item.id ? 'page' : undefined}
-                      type="button"
-                    >
-                      <Icon className="sidebar__nav-icon" size={18} />
-                      <span className="sidebar__nav-label">{item.label}</span>
-                      {item.badge && <span className="sidebar__nav-badge">{item.badge}</span>}
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="sidebar__section">
-            <span className="sidebar__section-label">ACCOUNT</span>
-            <ul className="sidebar__nav-list">
-              {ACCOUNT_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.id}>
-                    <button className="sidebar__nav-item" onClick={() => handleNavClick(item.id)} type="button">
-                      <Icon className="sidebar__nav-icon" size={18} />
-                      <span className="sidebar__nav-label">{item.label}</span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          <div className="sidebar__section">
-            <span className="sidebar__section-label">SUPPORT</span>
-            <ul className="sidebar__nav-list">
-              {SUPPORT_ITEMS.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.id}>
-                    <button className="sidebar__nav-item" onClick={() => handleNavClick(item.id)} type="button">
-                      <Icon className="sidebar__nav-icon" size={18} />
-                      <span className="sidebar__nav-label">{item.label}</span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          {renderSection('MENU', filteredMenu)}
+          {renderSection('ACCOUNT', filteredAccount)}
+          {renderSection('SUPPORT', filteredSupport)}
+          {!hasResults && searchQuery.trim() && (
+            <p className="sidebar__no-results">No matches found</p>
+          )}
         </nav>
 
         <div className="sidebar__footer">

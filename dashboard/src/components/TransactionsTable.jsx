@@ -12,6 +12,7 @@ const TRANSACTIONS = [
 export default function TransactionsTable() {
   const [filterOpen, setFilterOpen] = useState(false);
   const [filterPos, setFilterPos] = useState({ top: 0, left: 0 });
+  const [searchQuery, setSearchQuery] = useState('');
   const filterBtnRef = useRef(null);
 
   const toggleFilter = useCallback(() => {
@@ -33,6 +34,10 @@ export default function TransactionsTable() {
     };
   }, [filterOpen]);
 
+  const filteredTransactions = searchQuery.trim()
+    ? TRANSACTIONS.filter(tx => tx.id.toLowerCase().includes(searchQuery.toLowerCase()))
+    : TRANSACTIONS;
+
   return (
     <article className="transactions-card" aria-label="Recente transacties">
       <div className="transactions-card__header">
@@ -48,7 +53,14 @@ export default function TransactionsTable() {
       <div className="transactions-card__toolbar">
         <div className="transactions-card__search">
           <Search className="transactions-card__search-icon" size={16} />
-          <input type="search" placeholder="Search" className="transactions-card__search-input" aria-label="Search transactions" />
+          <input
+            type="search"
+            placeholder="Search"
+            className="transactions-card__search-input"
+            aria-label="Search transactions"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <span className="transactions-card__search-shortcut">⌘F</span>
         </div>
         <button ref={filterBtnRef} className="transactions-card__filter-btn" onClick={toggleFilter} type="button">
@@ -74,7 +86,7 @@ export default function TransactionsTable() {
             </tr>
           </thead>
           <tbody>
-            {TRANSACTIONS.map((tx) => (
+            {filteredTransactions.map((tx) => (
               <tr key={tx.id}>
                 <td><input type="checkbox" aria-label={`Select ${tx.id}`} /></td>
                 <td className="transactions-card__order-id">{tx.id}</td>
@@ -91,6 +103,13 @@ export default function TransactionsTable() {
                 </td>
               </tr>
             ))}
+            {filteredTransactions.length === 0 && (
+              <tr>
+                <td colSpan="5" style={{ textAlign: 'center', padding: 'var(--space-4)', color: 'var(--color-text-meta)' }}>
+                  No transactions found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
