@@ -135,7 +135,7 @@
   display: none;
   position: fixed;
   inset-block-start: var(--space-4);
-  inset-inline-start: var(--space-4);
+  inset-inline-end: var(--space-4);
   z-index: calc(var(--z-modal) + 10);
   inline-size: 44px;
   block-size: 44px;
