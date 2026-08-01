@@ -49,6 +49,7 @@ const Header = () => {
 
       <div className="header__right">
         <div className="header__month-dropdown">
+          {/* ✅ Popover API — FUTURE CSS: native popover with backdrop, dismiss, top-layer */}
           <button
             ref={btnRef}
             className="header__month-btn"
@@ -61,27 +62,26 @@ const Header = () => {
             <ChevronDown className={`header__chevron ${isDropdownOpen ? 'header__chevron--open' : ''}`} size={12} />
           </button>
 
-          {isDropdownOpen && (
-            <div
-              ref={popoverRef}
-              className="header__month-popover"
-              style={{ position: 'fixed', top: `${popoverPos.top}px`, left: `${popoverPos.left}px` }}
-            >
-              <ul className="header__month-list">
-                {months.map((month) => (
-                  <li key={month} className="header__month-item">
-                    <button
-                      className="header__month-option"
-                      onClick={() => setIsDropdownOpen(false)}
-                      type="button"
-                    >
-                      {month}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div
+            ref={popoverRef}
+            className="header__month-popover"
+            popover="auto"
+            style={isDropdownOpen ? undefined : { display: 'none' }}
+          >
+            <ul className="header__month-list">
+              {months.map((month) => (
+                <li key={month} className="header__month-item">
+                  <button
+                    className="header__month-option"
+                    onClick={() => setIsDropdownOpen(false)}
+                    type="button"
+                  >
+                    {month}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <button className="header__share-btn" type="button">

@@ -28,6 +28,24 @@
 /* Cascade layers */
 @layer reset, tokens, base, layout, components, utilities;
 
+/* ── Style Queries — FUTURE CSS: stijl elementen op basis van CSS variable waarden ── */
+@container style(--theme: dark) {
+  /* Extra overrides wanneer de parent container --theme: dark heeft */
+  .sidebar__brand-text {
+    text-shadow: 0 0 20px oklch(0.78 0.14 250 / 0.3);
+  }
+}
+
+/* ── calc-size() — FUTURE CSS: rekenen met intrinsieke groottes ── */
+/* Maakt animatie naar height: auto mogelijk */
+@supports (height: calc-size(auto, size)) {
+  .upgrade-banner {
+    max-block-size: calc-size(max-content, size);
+    overflow: hidden;
+    transition: max-block-size 0.3s ease;
+  }
+}
+
 @layer tokens {
 :root {
   /* ── Base: Accent blauw (Spendly primary) ── */
@@ -112,6 +130,12 @@
   --color-accent-primary-light: var(--color-blue-100);
   --color-accent-gradient-start: var(--color-blue-500);
   --color-accent-gradient-end: oklch(0.55 0.20 270);
+
+  /* ✅ Color Functions — FUTURE CSS: color-mix & relative colors */
+  /* Maak een hover-variant door 30% wit te mixen met de accent kleur */
+  --color-accent-soft: color-mix(in oklch, var(--color-accent-primary) 70%, white);
+  /* Relatieve kleur: neem accent, verhoog lightness met 20% */
+  --color-accent-tinted: oklch(from var(--color-accent-primary) calc(l + 0.15) c h);
 
   /* ── Semantic: Status ── */
   --color-status-success: var(--color-green-600);

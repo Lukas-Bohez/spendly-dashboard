@@ -77,6 +77,9 @@ function App() {
         <Header />
         <UpgradeBanner />
         <div className="dashboard-grid">
+          <div className="scroll-progress">
+            <div className="scroll-progress__bar"></div>
+          </div>
           <section className="section">
             <div className="stats-grid">
               <StatCard title="Total Balance" value="$16.745,00" change="+6%" changeType="positive" />
