@@ -262,18 +262,18 @@
 @media (width <= 1024px) {
   .sidebar {
     position: fixed;
-    inset-inline-start: -280px;
     inset-block-start: 0;
+    inset-inline-start: -280px;
     block-size: 100dvh;
     inline-size: 280px;
     transition: translate var(--transition-slow);
     z-index: var(--z-modal);
     box-shadow: var(--shadow-lg);
-    translate: -280px 0;
+    translate: 0 0;
   }
 
   .sidebar.sidebar--open {
-    translate: 0 0;
+    translate: 280px 0;
   }
 
   .sidebar-overlay {
