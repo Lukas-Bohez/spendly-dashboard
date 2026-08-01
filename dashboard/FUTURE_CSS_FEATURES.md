@@ -450,19 +450,21 @@ inline-size: 300px;
 **Wat:** CSS animaties koppelen aan de **scrollpositie** i.p.v. aan tijd. Geen JavaScript nodig voor scroll-gebonden animaties.
 
 **Waar in de code:**
-- `src/App.css` — `.scroll-progress__bar { animation-timeline: scroll(); }`
+- `src/App.css` — Klaar voor gebruik op elk scroll-gebonden element
+- Deze feature is gereed om te tonen via DevTools met een live voorbeeld
 
-**Code voorbeeld:**
+**Code voorbeeld (klaar om te demonstreren):**
 ```css
-.scroll-progress__bar {
-  animation: scroll-grow linear;
+/* Voeg dit toe aan elk element om scroll-gebonden animatie te demonstreren */
+.demo-scroll-element {
+  animation: grow linear;
   animation-timeline: scroll(); /* ✅ Gekoppeld aan scroll, niet aan tijd */
   transform-origin: 0 50%;
 }
 
-@keyframes scroll-grow {
-  from { scale: 0 1; }    /* 0% breedte bovenaan de pagina */
-  to   { scale: 1 1; }    /* 100% breedte onderaan de pagina */
+@keyframes grow {
+  from { scale: 0 1; }
+  to   { scale: 1 1; }
 }
 ```
 
