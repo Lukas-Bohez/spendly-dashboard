@@ -1,0 +1,83 @@
+/* ============================================================
+   U P G R A D E   B A N N E R   C S S
+   FUTURE CSS FEATURES:
+   ✅ CSS Nesting — native geneste selectors
+   ✅ @scope — scoped banner styles
+   ✅ Logical Properties — padding-inline, gap
+   ✅ :has() — parent state styling
+   ============================================================ */
+
+@scope (.upgrade-banner) {
+  :scope {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-5);
+    background-color: var(--color-bg-banner);
+    border-radius: var(--radius-md);
+    margin-block-end: var(--space-6);
+  }
+
+  & .upgrade-banner__content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1;
+    min-inline-size: 0;
+  }
+
+  & .upgrade-banner__icon {
+    flex-shrink: 0;
+    color: var(--color-accent-primary);
+  }
+
+  & .upgrade-banner__text {
+    font-size: var(--font-size-small);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-normal);
+  }
+
+  & .upgrade-banner__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  & .upgrade-banner__upgrade-btn {
+    padding: var(--space-1) var(--space-4);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-on-accent);
+    background-color: var(--color-accent-primary);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), scale var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-accent-primary-hover);
+      scale: 1.02;
+    }
+  }
+
+  & .upgrade-banner__close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 28px;
+    block-size: 28px;
+    color: var(--color-text-meta);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+
+    &:hover {
+      background-color: oklch(0 0 0 / 0.06);
+      color: var(--color-text-primary);
+    }
+  }
+}

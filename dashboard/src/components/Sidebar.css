@@ -1,0 +1,284 @@
+/* ============================================================
+   S I D E B A R   C S S — Spendly Dashboard
+
+   FUTURE CSS FEATURES:
+   ✅ CSS Nesting — native geneste selectors met &
+   ✅ Logical Properties — inset-inline-start, block-size
+   ✅ dvh viewport unit
+   ✅ Individual Transforms — translate
+   ✅ :has() — parent state
+   ✅ overscroll-behavior — voorkom scroll chaining
+   ============================================================ */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-sidebar);
+  border-inline-end: 1px solid var(--color-border-default);
+  padding: var(--space-5) var(--space-4);
+  gap: var(--space-5);
+  block-size: 100vh;
+  block-size: 100dvh;
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sidebar);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  inline-size: 260px;
+  flex-shrink: 0;
+}
+
+/* Overlay for mobile */
+.sidebar-overlay {
+  display: none;
+}
+
+/* Brand */
+.sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block: var(--space-1) var(--space-2);
+  flex-shrink: 0;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 32px;
+  block-size: 32px;
+  flex-shrink: 0;
+}
+
+.sidebar__logo-icon {
+  inline-size: 32px;
+  block-size: 32px;
+  background-color: var(--color-accent-primary);
+  border-radius: var(--radius-md);
+  position: relative;
+}
+
+.sidebar__logo-icon::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+  inline-size: 12px;
+  block-size: 12px;
+  background-color: white;
+  border-radius: var(--radius-full);
+}
+
+.sidebar__brand-text {
+  font-size: var(--font-size-h4);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-sidebar);
+}
+
+/* Search */
+.sidebar__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-bg-sidebar);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+  flex-shrink: 0;
+
+  &:has(input:focus-visible) {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px var(--color-accent-primary-light);
+  }
+}
+
+/* In dark mode, search bar stands out slightly from sidebar */
+[data-theme='dark'] .sidebar__search {
+  background-color: oklch(0.18 0.008 250);
+  border-color: oklch(0.28 0.01 250);
+}
+
+.sidebar__search-icon {
+  flex-shrink: 0;
+  color: var(--color-text-sidebar-muted);
+}
+
+.sidebar__search-input {
+  flex: 1;
+  min-inline-size: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-small);
+  color: var(--color-text-sidebar);
+
+  &::placeholder {
+    color: var(--color-text-sidebar-muted);
+  }
+}
+
+.sidebar__search-shortcut {
+  font-size: var(--font-size-meta);
+  color: var(--color-text-sidebar-muted);
+  background-color: var(--color-bg-surface-hover);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-default);
+  flex-shrink: 0;
+}
+
+/* Navigation — single scroll container, no double overflow */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  flex: 1;
+  min-block-size: 0;
+}
+
+.sidebar__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.sidebar__section-label {
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-sidebar-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-inline-start: var(--space-3);
+  margin-block-end: var(--space-1);
+}
+
+.sidebar__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-sidebar-muted);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  text-align: start;
+  position: relative;
+
+  &:hover {
+    background-color: var(--color-bg-surface-hover);
+    color: var(--color-text-sidebar);
+  }
+
+  &.sidebar__nav-item--active {
+    background-color: var(--color-sidebar-active-bg);
+    color: var(--color-text-sidebar-active);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 50%;
+      translate: 0 -50%;
+      inline-size: 3px;
+      block-size: 60%;
+      background-color: var(--color-accent-primary);
+      border-radius: var(--radius-full);
+    }
+  }
+}
+
+.sidebar__nav-icon {
+  flex-shrink: 0;
+}
+
+.sidebar__nav-label {
+  flex: 1;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar__nav-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 20px;
+  block-size: 20px;
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-sidebar-muted);
+  background-color: var(--color-bg-surface-hover);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+/* Footer */
+.sidebar__footer {
+  margin-block-start: auto;
+  padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-border-default);
+  flex-shrink: 0;
+}
+
+.sidebar__logout {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  inline-size: 100%;
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-status-error);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+
+  &:hover {
+    background-color: var(--color-status-error-bg);
+  }
+}
+
+/* ============================================================
+   R E S P O N S I V E — Mobile sidebar
+   ============================================================ */
+@media (width <= 1024px) {
+  .sidebar {
+    position: fixed;
+    inset-inline-start: -280px;
+    inset-block-start: 0;
+    block-size: 100dvh;
+    inline-size: 280px;
+    transition: inset-inline-start var(--transition-slow);
+    z-index: var(--z-modal);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar--open {
+    inset-inline-start: 0;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: oklch(0 0 0 / 0.4);
+    z-index: calc(var(--z-modal) - 1);
+    animation: fadeIn var(--transition-base);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,239 @@
+/* ============================================================
+   T R A N S A C T I O N S   T A B L E   C S S
+
+   FUTURE CSS FEATURES:
+   ✅ CSS Nesting — native geneste selectors
+   ✅ @scope — scoped table styles
+   ✅ :where() — lage specificiteit
+   ✅ Popover API — filter dropdown
+   ✅ @starting-style — popover animatie
+   ✅ Logical Properties — padding-inline, margin-block
+   ✅ :user-invalid — form validatie
+   ============================================================ */
+
+@scope (.transactions-card) {
+  :scope {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  & .transactions-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: var(--space-4);
+
+    & .transactions-card__title-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    & .transactions-card__title {
+      font-size: var(--font-size-h4);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    & .transactions-card__info {
+      color: var(--color-text-meta);
+      cursor: help;
+    }
+
+    & .transactions-card__menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      inline-size: 28px;
+      block-size: 28px;
+      color: var(--color-text-meta);
+      border-radius: var(--radius-sm);
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-bg-surface-hover);
+      }
+    }
+  }
+
+  & .transactions-card__toolbar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-block-end: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  & .transactions-card__search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex: 1;
+    min-inline-size: 200px;
+    padding: var(--space-2) var(--space-3);
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+    &:has(input:focus-visible) {
+      border-color: var(--color-accent-primary);
+      box-shadow: 0 0 0 3px var(--color-accent-primary-light);
+    }
+
+    & .transactions-card__search-icon {
+      flex-shrink: 0;
+      color: var(--color-text-meta);
+    }
+
+    & .transactions-card__search-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: var(--font-size-small);
+      color: var(--color-text-primary);
+
+      &::placeholder {
+        color: var(--color-text-meta);
+      }
+
+      /* ✅ :user-invalid — FUTURE CSS FEATURE */
+      &:user-invalid {
+        box-shadow: 0 0 0 2px var(--color-status-error);
+      }
+    }
+
+    & .transactions-card__search-shortcut {
+      font-size: var(--font-size-meta);
+      color: var(--color-text-meta);
+      background-color: var(--color-bg-surface-hover);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  & .transactions-card__filter-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-surface-hover);
+      color: var(--color-text-primary);
+    }
+  }
+
+  /* Filter popover — positioned via JS inline style */
+  & .transactions-card__filter-popover {
+    z-index: var(--z-popover);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-surface);
+    box-shadow: var(--shadow-lg);
+    font-size: var(--font-size-small);
+    color: var(--color-text-primary);
+    animation: popoverIn 0.2s var(--ease-spring);
+  }
+
+  @keyframes popoverIn {
+    from {
+      opacity: 0;
+      translate: 0 -8px;
+    }
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
+
+  & .transactions-card__table-wrapper {
+    overflow-x: auto;
+  }
+
+  & .transactions-card__table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-small);
+
+    & thead th {
+      padding: var(--space-2) var(--space-3);
+      text-align: start;
+      font-size: var(--font-size-meta);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-block-end: 1px solid var(--color-border-default);
+    }
+
+    & tbody tr {
+      border-block-end: 1px solid var(--color-border-light);
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-bg-surface-hover);
+      }
+    }
+
+    & tbody td {
+      padding: var(--space-3);
+      color: var(--color-text-primary);
+    }
+
+    & .transactions-card__order-id {
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+    }
+
+    & .transactions-card__amount {
+      font-weight: var(--font-weight-medium);
+    }
+
+    & .transactions-card__status {
+      display: inline-block;
+      padding: 2px var(--space-2);
+      font-size: var(--font-size-meta);
+      font-weight: var(--font-weight-medium);
+      border-radius: var(--radius-full);
+
+      &:where(.transactions-card__status--paid) {
+        background-color: var(--color-status-paid-bg);
+        color: var(--color-status-paid);
+      }
+
+      &:where(.transactions-card__status--pending) {
+        background-color: var(--color-status-pending-bg);
+        color: var(--color-status-pending);
+      }
+    }
+
+    & .transactions-card__row-menu {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      inline-size: 28px;
+      block-size: 28px;
+      color: var(--color-text-meta);
+      border-radius: var(--radius-sm);
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-bg-surface-hover);
+        color: var(--color-text-primary);
+      }
+    }
+  }
+}

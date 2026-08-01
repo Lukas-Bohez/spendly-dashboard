@@ -1,0 +1,147 @@
+/* ============================================================
+   G L O B A L E   S T I J L E N
+   Basis stijlen voor de hele applicatie
+
+   FUTURE CSS FEATURES in dit bestand:
+   ✅ font-size: 100% — respecteert gebruiker browser instelling
+   ✅ dvh viewport unit — dynamische viewport hoogte voor mobile
+   ✅ Logical Properties — inset-block-size, etc.
+   ✅ overscroll-behavior — voorkom pull-to-refresh op mobile
+   ✅ scroll-behavior: smooth — smooth scrolling
+   ✅ color-scheme — light dark integratie
+   ✅ :focus-visible — alleen focus ring voor keyboard gebruikers
+   ✅ accent-color — form elementen kleur
+   ✅ caret-color — cursor kleur
+   ✅ text-wrap: balance — mooiere titels
+   ✅ text-wrap: pretty — betere paragraven
+   ✅ font-synthesis: none — voorkom faux bold/italic bij custom fonts
+   ============================================================ */
+
+@layer base {
+  html {
+    font-size: 100%; /* ✅ Respecteer browser font-size van gebruiker */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+    hanging-punctuation: first last;
+    color-scheme: light dark; /* ✅ FUTURE: color-scheme */
+  }
+
+  body {
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-app);
+    min-block-size: 100vh;
+    min-block-size: 100dvh; /* ✅ FUTURE: dvh — dynamische viewport */
+    /* ✅ FUTURE: overscroll-behavior — voorkomt pull-to-refresh op mobile */
+    overscroll-behavior-y: contain;
+    /* ✅ FUTURE: font-synthesis — voorkom faux bold/italic */
+    font-synthesis: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* ✅ FUTURE: text-wrap: balance — titels breken mooi af */
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  /* ✅ FUTURE: text-wrap: pretty — paragraven zonder wezen */
+  p {
+    text-wrap: pretty;
+    max-inline-size: 75ch;
+  }
+
+  /* ✅ FUTURE: accent-color — form controls krijgen de accent kleur */
+  input[type='checkbox'],
+  input[type='radio'],
+  input[type='range'],
+  progress {
+    accent-color: var(--color-accent-primary);
+  }
+
+  /* ✅ FUTURE: caret-color — cursor kleur in inputs */
+  input,
+  textarea {
+    caret-color: var(--color-accent-primary);
+  }
+}
+
+/* ── Focus styles — alleen keyboard gebruikers ── */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ── Selectie styling ── */
+@layer base {
+  ::selection {
+    background-color: var(--color-accent-primary-light);
+    color: var(--color-text-primary);
+  }
+}
+
+/* ✅ FUTURE: :where() — lage specificiteit voor makkelijk overriden */
+@layer base {
+  :where(ul, ol) {
+    list-style: none;
+  }
+
+  :where(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* ✅ FUTURE: Scroll snapping op main content */
+@layer base {
+  .main-content {
+    /* ✅ FUTURE: overscroll-behavior + scroll-behavior */
+    overscroll-behavior-y: contain;
+    scroll-behavior: smooth; /* ✅ FUTURE: scroll-behavior */
+  }
+}
+
+/* ── Scrollbar styling (Webkit) ── */
+@layer base {
+  ::-webkit-scrollbar {
+    inline-size: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-default);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+}
+
+/* ── Screen reader only utility ── */
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    inline-size: 1px;
+    block-size: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

@@ -1,0 +1,60 @@
+/* ============================================================
+   R E S E T   C S S
+   Consistente basis voor alle browsers
+
+   FUTURE CSS FEATURES in dit bestand:
+   ✅ @layer — cascade layers voor propere specificiteit
+   ✅ all: unset — moderne reset methode
+   ✅ Logical Properties — inline-size, block-size
+   ============================================================ */
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  :where(ul, ol) {
+    list-style: none;
+  }
+
+  :where(a) {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}

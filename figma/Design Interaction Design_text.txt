@@ -1,0 +1,869 @@
+═══ TEXT — Design Interaction Design
+  2026-08-01T10:20:51.813Z
+═══
+ 
+── Ga direct naar inhoud ──
+  Font: Inter Semi Bold 14px
+  Text: Ga direct naar inhoud
+ 
+── Spendly ──
+  Font: Inter Bold 16px
+  Text: Spendly
+ 
+── Search ──
+  Font: Inter Regular 13px
+  Text: Search
+ 
+── ⌘F ──
+  Font: Cambria Math Regular 12px
+  Text: ⌘F
+ 
+── MENU ──
+  Font: Inter Semi Bold 11px
+  Text: MENU
+ 
+── Dashboard ──
+  Font: Inter Medium 13px
+  Text: Dashboard
+ 
+── Financial Statements ──
+  Font: Inter Medium 13px
+  Text: Financial Statements
+ 
+── 8 ──
+  Font: Inter Semi Bold 11px
+  Text: 8
+ 
+── Key Metrics ──
+  Font: Inter Medium 13px
+  Text: Key Metrics
+ 
+── Tax & Compliance ──
+  Font: Inter Medium 13px
+  Text: Tax & Compliance
+ 
+── 18 ──
+  Font: Inter Semi Bold 11px
+  Text: 18
+ 
+── Account Management ──
+  Font: Inter Medium 13px
+  Text: Account Management
+ 
+── 13 ──
+  Font: Inter Semi Bold 11px
+  Text: 13
+ 
+── ACCOUNT ──
+  Font: Inter Semi Bold 11px
+  Text: ACCOUNT
+ 
+── Account ──
+  Font: Inter Medium 13px
+  Text: Account
+ 
+── Member ──
+  Font: Inter Medium 13px
+  Text: Member
+ 
+── SUPPORT ──
+  Font: Inter Semi Bold 11px
+  Text: SUPPORT
+ 
+── Setting ──
+  Font: Inter Medium 13px
+  Text: Setting
+ 
+── Security ──
+  Font: Inter Medium 13px
+  Text: Security
+ 
+── Help & center ──
+  Font: Inter Medium 13px
+  Text: Help & center
+ 
+── Logout ──
+  Font: Inter Medium 13px
+  Text: Logout
+ 
+── Spendly ──
+  Font: Inter Regular 12px
+  Text: Spendly
+ 
+── > ──
+  Font: Inter Regular 12px
+  Text: >
+ 
+── Dashboard ──
+  Font: Inter Regular 12px
+  Text: Dashboard
+ 
+── Welcome back, Christina ──
+  Font: Inter Bold 20px
+  Text: Welcome back, Christina
+ 
+── October ──
+  Font: Inter Medium 13px
+  Text: October
+ 
+── Share ──
+  Font: Inter Medium 13px
+  Text: Share
+ 
+── Christina Perri ──
+  Font: Inter Semi Bold 13px
+  Text: Christina Perri
+ 
+── edelweis@gmail.com ──
+  Font: Inter Regular 12px
+  Text: edelweis@gmail.com
+ 
+── Unlock the full potential and elevate your experience today! ──
+  Font: Inter Regular 13px
+  Text: Unlock the full potential and elevate your experience today!
+ 
+── Upgrade ──
+  Font: Inter Medium 13px
+  Text: Upgrade
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $16.745,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: +6%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $5.981,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: -2,8%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $9.116,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: +1,3%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $4.872,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: +1,3%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Cash Flow Analytics ──
+  Font: Inter Semi Bold 16px
+  Text: Cash Flow Analytics
+ 
+── Monthly ──
+  Font: Inter Medium 13px
+  Text: Monthly
+ 
+── $100 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $100
+ 
+── $300 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $300
+ 
+── $500 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $500
+ 
+── $700 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $700
+ 
+── $900 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $900
+ 
+── May ──
+  Font: Inter Regular 19.78638458251953px
+  Text: May
+ 
+── Jun ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Jun
+ 
+── Jul ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Jul
+ 
+── Aug ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Aug
+ 
+── Sep ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Sep
+ 
+── Oct ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Oct
+ 
+── Nov ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Nov
+ 
+── Dec ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Dec
+ 
+── Income ──
+  Font: Inter Regular 12px
+  Text: Income
+ 
+── Expense ──
+  Font: Inter Regular 12px
+  Text: Expense
+ 
+── Financial Balance ──
+  Font: Inter Semi Bold 16px
+  Text: Financial Balance
+ 
+── 48% ──
+  Font: Inter Bold 42px
+  Text: 48%
+ 
+── from yesterday ──
+  Font: Inter Regular 13px
+  Text: from yesterday
+ 
+── Detail ──
+  Font: Inter Medium 13px
+  Text: Detail
+ 
+── Total Profit ──
+  Font: Inter Regular 12px
+  Text: Total Profit
+ 
+── Profit Today ──
+  Font: Inter Regular 12px
+  Text: Profit Today
+ 
+── For Week ──
+  Font: Inter Regular 12px
+  Text: For Week
+ 
+── Recent Transactions ──
+  Font: Inter Semi Bold 16px
+  Text: Recent Transactions
+ 
+── Search ──
+  Font: Inter Regular 13px
+  Text: Search
+ 
+── ⌘F ──
+  Font: Cambria Math Regular 12px
+  Text: ⌘F
+ 
+── Filter ──
+  Font: Inter Medium 13px
+  Text: Filter
+ 
+── ORDER ID ──
+  Font: Inter Medium 12px
+  Text: ORDER ID
+ 
+── AMOUNT ──
+  Font: Inter Medium 12px
+  Text: AMOUNT
+ 
+── STATUS ──
+  Font: Inter Medium 12px
+  Text: STATUS
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 0051
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $137.000
+ 
+── Paid ──
+  Font: Inter Medium 12px
+  Text: Paid
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 0046
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $432.100
+ 
+── Pending ──
+  Font: Inter Medium 12px
+  Text: Pending
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 0165
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $200.000
+ 
+── Paid ──
+  Font: Inter Medium 12px
+  Text: Paid
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 6391
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $365.000
+ 
+── Paid ──
+  Font: Inter Medium 12px
+  Text: Paid
+ 
+── Tax Liabilities ──
+  Font: Inter Semi Bold 16px
+  Text: Tax Liabilities
+ 
+── Yearly ──
+  Font: Inter Medium 13px
+  Text: Yearly
+ 
+── $32.872,00 ──
+  Font: Inter Bold 28px
+  Text: $32.872,00
+ 
+── Total Tax /2024 ──
+  Font: Inter Regular 12px
+  Text: Total Tax /2024
+ 
+── Value Added Tax ──
+  Font: Inter Regular 12px
+  Text: Value Added Tax
+ 
+── 44% ──
+  Font: Inter Medium 12px
+  Text: 44%
+ 
+── Employee Income Tax ──
+  Font: Inter Regular 12px
+  Text: Employee Income Tax
+ 
+── 36% ──
+  Font: Inter Medium 12px
+  Text: 36%
+ 
+── Tax on Services ──
+  Font: Inter Regular 12px
+  Text: Tax on Services
+ 
+── 20% ──
+  Font: Inter Medium 12px
+  Text: 20%
+ 
+── TAX LIABILITIES TYPE ──
+  Font: Inter Medium 12px
+  Text: TAX LIABILITIES TYPE
+ 
+── DATE ──
+  Font: Inter Medium 12px
+  Text: DATE
+ 
+── AMOUNT ──
+  Font: Inter Medium 12px
+  Text: AMOUNT
+ 
+── STATUS ──
+  Font: Inter Medium 12px
+  Text: STATUS
+ 
+── Tax on Service ──
+  Font: Inter Regular 13px
+  Text: Tax on Service
+ 
+── Oct 18, 2024 ──
+  Font: Inter Regular 13px
+  Text: Oct 18, 2024
+ 
+── $250.000 ──
+  Font: Inter Regular 13px
+  Text: $250.000
+ 
+── Success ──
+  Font: Inter Medium 12px
+  Text: Success
+ 
+── Ga direct naar inhoud ──
+  Font: Inter Semi Bold 14px
+  Text: Ga direct naar inhoud
+ 
+── Spendly ──
+  Font: Inter Bold 16px
+  Text: Spendly
+ 
+── Search ──
+  Font: Inter Regular 13px
+  Text: Search
+ 
+── ⌘F ──
+  Font: Cambria Math Regular 12px
+  Text: ⌘F
+ 
+── MENU ──
+  Font: Inter Semi Bold 11px
+  Text: MENU
+ 
+── Dashboard ──
+  Font: Inter Medium 13px
+  Text: Dashboard
+ 
+── Financial Statements ──
+  Font: Inter Medium 13px
+  Text: Financial Statements
+ 
+── 8 ──
+  Font: Inter Semi Bold 11px
+  Text: 8
+ 
+── Key Metrics ──
+  Font: Inter Medium 13px
+  Text: Key Metrics
+ 
+── Tax & Compliance ──
+  Font: Inter Medium 13px
+  Text: Tax & Compliance
+ 
+── 18 ──
+  Font: Inter Semi Bold 11px
+  Text: 18
+ 
+── Account Management ──
+  Font: Inter Medium 13px
+  Text: Account Management
+ 
+── 13 ──
+  Font: Inter Semi Bold 11px
+  Text: 13
+ 
+── ACCOUNT ──
+  Font: Inter Semi Bold 11px
+  Text: ACCOUNT
+ 
+── Account ──
+  Font: Inter Medium 13px
+  Text: Account
+ 
+── Member ──
+  Font: Inter Medium 13px
+  Text: Member
+ 
+── SUPPORT ──
+  Font: Inter Semi Bold 11px
+  Text: SUPPORT
+ 
+── Setting ──
+  Font: Inter Medium 13px
+  Text: Setting
+ 
+── Security ──
+  Font: Inter Medium 13px
+  Text: Security
+ 
+── Help & center ──
+  Font: Inter Medium 13px
+  Text: Help & center
+ 
+── Logout ──
+  Font: Inter Medium 13px
+  Text: Logout
+ 
+── Spendly ──
+  Font: Inter Regular 12px
+  Text: Spendly
+ 
+── > ──
+  Font: Inter Regular 12px
+  Text: >
+ 
+── Dashboard ──
+  Font: Inter Regular 12px
+  Text: Dashboard
+ 
+── Welcome back, Christina ──
+  Font: Inter Bold 20px
+  Text: Welcome back, Christina
+ 
+── October ──
+  Font: Inter Medium 13px
+  Text: October
+ 
+── Share ──
+  Font: Inter Medium 13px
+  Text: Share
+ 
+── Christina Perri ──
+  Font: Inter Semi Bold 13px
+  Text: Christina Perri
+ 
+── edelweis@gmail.com ──
+  Font: Inter Regular 12px
+  Text: edelweis@gmail.com
+ 
+── Unlock the full potential and elevate your experience today! ──
+  Font: Inter Regular 13px
+  Text: Unlock the full potential and elevate your experience today!
+ 
+── Upgrade ──
+  Font: Inter Medium 13px
+  Text: Upgrade
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $16.745,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: +6%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $5.981,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: -2,8%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $9.116,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: +1,3%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Total Balance ──
+  Font: Inter Medium 13px
+  Text: Total Balance
+ 
+── $16.745,00 ──
+  Font: Inter Bold 28px
+  Text: $4.872,00
+ 
+── +6% ──
+  Font: Inter Semi Bold 12px
+  Text: +1,3%
+ 
+── vs last month ──
+  Font: Inter Regular 12px
+  Text: vs last month
+ 
+── Cash Flow Analytics ──
+  Font: Inter Semi Bold 16px
+  Text: Cash Flow Analytics
+ 
+── Monthly ──
+  Font: Inter Medium 13px
+  Text: Monthly
+ 
+── $100 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $100
+ 
+── $300 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $300
+ 
+── $500 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $500
+ 
+── $700 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $700
+ 
+── $900 ──
+  Font: Inter Regular 19.78638458251953px
+  Text: $900
+ 
+── May ──
+  Font: Inter Regular 19.78638458251953px
+  Text: May
+ 
+── Jun ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Jun
+ 
+── Jul ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Jul
+ 
+── Aug ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Aug
+ 
+── Sep ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Sep
+ 
+── Oct ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Oct
+ 
+── Nov ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Nov
+ 
+── Dec ──
+  Font: Inter Regular 19.78638458251953px
+  Text: Dec
+ 
+── Income ──
+  Font: Inter Regular 12px
+  Text: Income
+ 
+── Expense ──
+  Font: Inter Regular 12px
+  Text: Expense
+ 
+── Financial Balance ──
+  Font: Inter Semi Bold 16px
+  Text: Financial Balance
+ 
+── 48% ──
+  Font: Inter Bold 42px
+  Text: 48%
+ 
+── from yesterday ──
+  Font: Inter Regular 13px
+  Text: from yesterday
+ 
+── Detail ──
+  Font: Inter Medium 13px
+  Text: Detail
+ 
+── Total Profit ──
+  Font: Inter Regular 12px
+  Text: Total Profit
+ 
+── Profit Today ──
+  Font: Inter Regular 12px
+  Text: Profit Today
+ 
+── For Week ──
+  Font: Inter Regular 12px
+  Text: For Week
+ 
+── Recent Transactions ──
+  Font: Inter Semi Bold 16px
+  Text: Recent Transactions
+ 
+── Search ──
+  Font: Inter Regular 13px
+  Text: Search
+ 
+── ⌘F ──
+  Font: Cambria Math Regular 12px
+  Text: ⌘F
+ 
+── Filter ──
+  Font: Inter Medium 13px
+  Text: Filter
+ 
+── ORDER ID ──
+  Font: Inter Medium 12px
+  Text: ORDER ID
+ 
+── AMOUNT ──
+  Font: Inter Medium 12px
+  Text: AMOUNT
+ 
+── STATUS ──
+  Font: Inter Medium 12px
+  Text: STATUS
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 0051
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $137.000
+ 
+── Paid ──
+  Font: Inter Medium 12px
+  Text: Paid
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 0046
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $432.100
+ 
+── Pending ──
+  Font: Inter Medium 12px
+  Text: Pending
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 0165
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $200.000
+ 
+── Paid ──
+  Font: Inter Medium 12px
+  Text: Paid
+ 
+── SPD - 0051 ──
+  Font: Inter Medium 13px
+  Text: SPD - 6391
+ 
+── $137.000 ──
+  Font: Inter Medium 13px
+  Text: $365.000
+ 
+── Paid ──
+  Font: Inter Medium 12px
+  Text: Paid
+ 
+── Tax Liabilities ──
+  Font: Inter Semi Bold 16px
+  Text: Tax Liabilities
+ 
+── Yearly ──
+  Font: Inter Medium 13px
+  Text: Yearly
+ 
+── $32.872,00 ──
+  Font: Inter Bold 28px
+  Text: $32.872,00
+ 
+── Total Tax /2024 ──
+  Font: Inter Regular 12px
+  Text: Total Tax /2024
+ 
+── Value Added Tax ──
+  Font: Inter Regular 12px
+  Text: Value Added Tax
+ 
+── 44% ──
+  Font: Inter Medium 12px
+  Text: 44%
+ 
+── Employee Income Tax ──
+  Font: Inter Regular 12px
+  Text: Employee Income Tax
+ 
+── 36% ──
+  Font: Inter Medium 12px
+  Text: 36%
+ 
+── Tax on Services ──
+  Font: Inter Regular 12px
+  Text: Tax on Services
+ 
+── 20% ──
+  Font: Inter Medium 12px
+  Text: 20%
+ 
+── TAX LIABILITIES TYPE ──
+  Font: Inter Medium 12px
+  Text: TAX LIABILITIES TYPE
+ 
+── DATE ──
+  Font: Inter Medium 12px
+  Text: DATE
+ 
+── AMOUNT ──
+  Font: Inter Medium 12px
+  Text: AMOUNT
+ 
+── STATUS ──
+  Font: Inter Medium 12px
+  Text: STATUS
+ 
+── Tax on Service ──
+  Font: Inter Regular 13px
+  Text: Tax on Service
+ 
+── Oct 18, 2024 ──
+  Font: Inter Regular 13px
+  Text: Oct 18, 2024
+ 
+── $250.000 ──
+  Font: Inter Regular 13px
+  Text: $250.000
+ 
+── Success ──
+  Font: Inter Medium 12px
+  Text: Success
+ 
+── END (216 texts) ──
