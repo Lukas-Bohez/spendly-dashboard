@@ -2,7 +2,7 @@
 
 ## Project overzicht
 
-Dit is een React + Vite frontend project dat het **Spendly** financieel dashboard nabouwt op basis van het Figma design in `../figma/`. Het project voldoet aan alle eisen uit `opdracht.md` voor Deel 2: Frontend.
+Dit is een React + Vite frontend project dat het **Spendly** financieel dashboard nabouwt op basis van het Figma design in `../figma/` https://dribbble.com/shots/25270785-SaaS-Dashboard-for-Business-Payments-Web-Application  . Het project voldoet aan alle eisen uit `opdracht.md` voor Deel 2: Frontend.
 
 ## Starten
 
