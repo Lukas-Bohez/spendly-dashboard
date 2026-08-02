@@ -1,7 +1,7 @@
 # 📋 Examenvoorbereiding — Interaction Design (Herexamen)
 
 > Alles over het examen, de deadline, de evaluatie en wat er nog te doen staat.
-> Bronnen: `opdracht.md`, `files/Introductie & evaluatie.pdf`, course slides in `files/`.
+> Bronnen: `docs/assignment/opdracht.md`, Leho ("Eindopdracht 2de zit"), `files/Introductie & evaluatie.pdf`, Howest academische kalender.
 
 ---
 
@@ -14,7 +14,7 @@
 | **Punten** | 100 |
 | **Indienvenster** | 26 juni 2026, 0:00 → **18 augustus 2026, 12:00** |
 | **Opdracht zegt** | *"Deadline: dag van het examen"* — dus de examendag = **18 augustus 2026** |
-| **Examenperiode** | **Derde examenperiode: 17 – 5 september 2026** (bron: [Howest academische kalender](https://www.howest.be/nl/academische-kalender)) — jouw examen valt in **week 1** daarvan |
+| **Examenperiode** | **Derde examenperiode: 17 augustus – 5 september 2026** (bron: [Howest academische kalender](https://www.howest.be/nl/academische-kalender)) — jouw examen valt in **week 1** daarvan |
 | **Deliberatie/punten** | Bekendmaking in de week van 1–5 september en 7–12 september 2026 |
 | **Mondeling examen** | Na de deadline; **exact uur en lokaal** → check je persoonlijke examenrooster op Leho |
 | **Lectoren** | Martijn Loth (moduleverantwoordelijke), Simon Coudeville |
