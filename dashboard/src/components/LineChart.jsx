@@ -49,7 +49,7 @@ export default function LineChart() {
     <article className="line-chart" aria-label="Cash Flow Analytics">
       <div className="line-chart__header">
         <div className="line-chart__title-group">
-          <h3 className="line-chart__title">Cash Flow Analytics</h3>
+          <h2 className="line-chart__title">Cash Flow Analytics</h2>
           <Info className="line-chart__info-icon" size={14} />
         </div>
         <div className="line-chart__controls">

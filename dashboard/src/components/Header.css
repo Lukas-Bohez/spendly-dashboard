@@ -87,20 +87,36 @@
 }
 
 /* Popover dropdown
-   ✅ @starting-style — FUTURE CSS: definieer eerste frame voor animatie van display:none → zichtbaar
-   ✅ Popover API — FUTURE CSS: native top-layer, auto dismiss, ::backdrop */
+   ✅ Popover API — FUTURE HTML/CSS: [popover] attribute + popovertarget invoker,
+      native top-layer rendering, light-dismiss & Escape sluiten automatisch
+   ✅ @starting-style — FUTURE CSS: definieer eerste frame voor animatie van display:none → zichtbaar */
 .header__month-popover {
+  /* Default positie: gecentreerd (native popover fallback).
+     JS/Anchor positioning verplaatst hem onder de knop. */
+  margin: 0;
   padding: var(--space-2);
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border-default);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   min-inline-size: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  /* Gesloten toestand (eindpunt van sluit-animatie) */
+  opacity: 0;
+  translate: 0 -8px;
+  transition: opacity 0.2s var(--ease-spring), translate 0.2s var(--ease-spring),
+    display 0.2s allow-discrete, overlay 0.2s allow-discrete;
+}
+
+/* Open toestand — :popover-open is de native pseudo-class van de Popover API */
+.header__month-popover:popover-open {
   opacity: 1;
   translate: 0 0;
-  transition: opacity 0.2s var(--ease-spring), translate 0.2s var(--ease-spring), display 0.2s allow-discrete;
 
-  /* ✅ @starting-style — definieert beginwaarden voor de open-animatie */
+  /* ✅ @starting-style — beginwaarden voor de open-animatie */
   @starting-style {
     opacity: 0;
     translate: 0 -8px;
@@ -124,19 +140,6 @@
   }
 }
 
-.header__month-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.header__month-item {
-  border-radius: var(--radius-sm);
-}
-
 .header__month-option {
   inline-size: 100%;
   padding: var(--space-2) var(--space-3);
@@ -152,6 +155,11 @@
   &:hover {
     background-color: var(--color-accent-primary-light);
     color: var(--color-accent-primary);
+  }
+
+  &.header__month-option--selected {
+    color: var(--color-accent-primary);
+    font-weight: var(--font-weight-semibold);
   }
 }
 

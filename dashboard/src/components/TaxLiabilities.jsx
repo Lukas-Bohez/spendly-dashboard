@@ -16,7 +16,7 @@ export default function TaxLiabilities() {
     <article className="tax-card" aria-label="Tax Liabilities">
       <div className="tax-card__header">
         <div className="tax-card__title-group">
-          <h3 className="tax-card__title">Tax Liabilities</h3>
+          <h2 className="tax-card__title">Tax Liabilities</h2>
           <Info className="tax-card__info" size={14} />
         </div>
         <div className="tax-card__controls">

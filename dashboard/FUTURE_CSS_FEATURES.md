@@ -398,19 +398,28 @@ inline-size: 300px;
 
 ## 18. `@starting-style` — Entry Animations
 
-**Wat:** Definieert de **eerste frame** van een element dat van `display: none` naar zichtbaar gaat. Zonder dit kan je niet animeren bij het openen.
+**Wat:** Definieert de **eerste frame** van een element dat van `display: none` naar zichtbaar gaat. Zonder dit kan je niet animeren bij het openen. In combinatie met `transition-behavior: allow-discrete` op `display` (en `overlay`) krijg je zelfs een **sluit-animatie** op native popovers.
 
 **Waar in de code:**
-- `src/components/Header.css` — popover dropdown
+- `src/components/Header.css` — maand popover dropdown
+- `src/components/TransactionsTable.css` — filter popover
 
 **Code voorbeeld:**
 ```css
 .header__month-popover {
+  /* Gesloten toestand (eindpunt van de sluit-animatie) */
+  opacity: 0;
+  translate: 0 -8px;
+  transition: opacity 0.2s, translate 0.2s,
+    display 0.2s allow-discrete, overlay 0.2s allow-discrete;
+}
+
+.header__month-popover:popover-open {
+  /* Open toestand */
   opacity: 1;
   translate: 0 0;
-  transition: opacity 0.2s, translate 0.2s, display 0.2s allow-discrete;
 
-  /* ✅ Definieer ALLEEN de eerste frame waarden */
+  /* ✅ Definieer ALLEEN de eerste frame waarden voor de open-animatie */
   @starting-style {
     opacity: 0;
     translate: 0 -8px;
@@ -520,20 +529,32 @@ inline-size: 300px;
 **Wat:** Native HTML/CSS voor popovers, menus en tooltips. Elementen gaan automatisch naar de "top layer", kunnen gesloten worden met Escape/klik buiten, en hebben een `::backdrop` pseudo-element.
 
 **Waar in de code:**
-- `src/components/Header.jsx` — `<div popover="auto">` attribuut
-- `src/components/Header.css` — `::backdrop` styling
+- `src/components/Header.jsx` — maand dropdown: `<div popover="auto">` + `popovertarget` invoker op de knop
+- `src/components/TransactionsTable.jsx` — status filter popover
+- `src/components/Header.css` — `:popover-open`, `::backdrop` styling
 
 **Code voorbeeld:**
 ```html
-<button>Open</button>
-<div popover="auto">
-  <ul>
-    <li>Option 1</li>
-    <li>Option 2</li>
-  </ul>
+<!-- popovertarget = native invoker: open/sluit/light-dismiss ZONDER JavaScript -->
+<button popovertarget="month-popover" aria-haspopup="listbox">October</button>
+
+<div id="month-popover" popover="auto" role="listbox">
+  <button role="option">January</button>
+  <button role="option">February</button>
 </div>
 ```
+```js
+// React state syncen met de native popover state (Escape, klik buiten = light-dismiss)
+popover.addEventListener('toggle', (e) => {
+  setIsDropdownOpen(e.newState === 'open');
+});
+```
 ```css
+/* De native pseudo-class voor de open toestand */
+.header__month-popover:popover-open {
+  opacity: 1;
+}
+
 /* Style de overlay achter de popover */
 .header__month-popover::backdrop {
   background-color: oklch(0 0 0 / 0.15);
@@ -624,7 +645,7 @@ inline-size: 300px;
 
 2. **Wijs op `@layer`**: De cascade is expliciet georganiseerd — geen `!important` of specificity wars.
 
-3. **Laat de interactieve features zien**: Open de maand-dropdown (Popover API + @starting-style), scroll door de pagina (Scroll-Linked progress bar), verklein het scherm (Container Queries).
+3. **Laat de interactieve features zien**: Open de maand-dropdown en de transactie-filter (Popover API + @starting-style), filter op status, verklein het scherm (Container Queries).
 
 4. **Toggle dark mode**: Het hele thema switcht via `data-theme` + CSS variables. Geen JavaScript voor de styling zelf — puur CSS cascade.
 

@@ -58,7 +58,7 @@ function App() {
 
   return (
     <div className="app-layout">
-      <a href="#main-content" className="skip-link">Ga direct naar inhoud</a>
+      <a href="#main-content" className="skip-link">Skip to main content</a>
 
       <Sidebar mobileOpen={mobileNavOpen} onClose={closeMobileNav} />
 
@@ -67,7 +67,7 @@ function App() {
         onClick={toggleMobileNav}
         aria-expanded={mobileNavOpen}
         aria-controls="sidebar-nav"
-        aria-label={mobileNavOpen ? 'Sluit navigatie' : 'Open navigatie'}
+        aria-label={mobileNavOpen ? 'Close navigation' : 'Open navigation'}
         type="button"
       >
         {mobileNavOpen ? <X size={20} /> : <Menu size={20} />}
@@ -77,7 +77,7 @@ function App() {
         <Header />
         <UpgradeBanner />
         <div className="dashboard-grid">
-          <section className="section">
+          <section className="section" aria-label="Key statistics">
             <div className="stats-grid">
               <StatCard title="Total Balance" value="$16.745,00" change="+6%" changeType="positive" />
               <StatCard title="Total Saving" value="$5.981,00" change="-2,8%" changeType="negative" />
@@ -85,13 +85,13 @@ function App() {
               <StatCard title="Credit" value="$4.872,00" change="+1,3%" changeType="positive" />
             </div>
           </section>
-          <section className="section">
+          <section className="section" aria-label="Cash flow analytics and financial balance">
             <div className="analytics-grid">
               <LineChart />
               <GaugeChart />
             </div>
           </section>
-          <section className="section">
+          <section className="section" aria-label="Transactions and tax liabilities">
             <div className="bottom-grid">
               <TransactionsTable />
               <TaxLiabilities />
@@ -100,7 +100,12 @@ function App() {
         </div>
       </main>
 
-      <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme" type="button">
+      <button
+        className="theme-toggle"
+        onClick={toggleTheme}
+        aria-label={theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme'}
+        type="button"
+      >
         {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
       </button>
     </div>

@@ -100,9 +100,10 @@ Elke component is opgebouwd als een aparte module met eigen `.jsx` en `.css` bes
 - Sluit met Escape toets of klik op overlay
 
 ### Header
-- Breadcrumb: "Spendly > Dashboard"
-- "Welcome back, Christina" titel
-- Month dropdown met `popover="auto"` (Popover API) + `@starting-style` animatie
+- Breadcrumb: "Spendly > Dashboard" (`nav` met `aria-label="Breadcrumb"`, `aria-current="page"`)
+- "Welcome back, Christina" titel (`h1`)
+- **Functionele month dropdown**: echte Popover API implementatie — `popover="auto"` + `popovertarget` invoker (native open/sluit/light-dismiss/Escape zonder JS), `toggle` events syncen React state, `:popover-open` + `@starting-style` open/sluit animatie, Anchor Positioning met JS fallback
+- Geselecteerde maand wordt getoond op de knop (state)
 - Share knop
 - User avatar (CP) + naam + email
 
@@ -133,10 +134,11 @@ Elke component is opgebouwd als een aparte module met eigen `.jsx` en `.css` bes
 
 ### TransactionsTable
 - **Functionele search**: Filtert live op Order ID
-- Filter knop (JS-positioned popover)
+- **Functionele status filter**: Popover API popover met All / Paid / Pending opties, actieve filter als badge op de Filter knop, combineert met search
 - Tabel met: checkbox, Order ID, Amount, Status, row menu
 - Status badges: Paid (groen), Pending (oranje)
 - Hover: rij highlight
+- `aria-live="polite"` op de tabel wrapper — screen readers kondigen filter resultaten aan
 - Toont "No transactions found" bij geen resultaten
 
 ### TaxLiabilities
@@ -155,21 +157,28 @@ Elke component is opgebouwd als een aparte module met eigen `.jsx` en `.css` bes
 
 1. **Sidebar zoekbalk**: Filtert 10+ navigatie items live (useMemo + useState)
 2. **Transactions zoekbalk**: Filtert 4 transacties op Order ID
-3. **Month dropdown**: Popover met 12 maanden, sluit op scroll/resize/Escape
-4. **Theme toggle**: Switch tussen light/dark met localStorage persistentie
-5. **Mobile hamburger menu**: Opent off-canvas sidebar met overlay
-6. **LineChart hover tooltips**: Toont Income/Expense waarden per maand
-7. **GaugeChart animatie**: Geanimeerde gauge fill via @property CSS Houdini
+3. **Transactions status filter**: Native popover met All/Paid/Pending, actieve selectie met check icon + badge op knop
+4. **Month dropdown**: Native popover (`popovertarget`) met 12 maanden, selecteerbare maand, sluit op scroll/resize/Escape/klik buiten
+5. **Theme toggle**: Switch tussen light/dark met localStorage persistentie
+6. **Mobile hamburger menu**: Opent off-canvas sidebar met overlay
+7. **LineChart hover tooltips**: Toont Income/Expense waarden per maand
+8. **GaugeChart animatie**: Geanimeerde gauge fill via @property CSS Houdini
 
 ## Accessibility
 
 - `font-size: 100%` op `html` — respecteert browser instelling
 - Alle sizes in `rem` — schaalt met gebruiker font-size
-- Skip link "Ga direct naar inhoud"
+- `lang="en"` — matcht de Engelse UI content (screen reader uitspraak)
+- Skip link "Skip to main content" (verschijnt bij keyboard focus)
+- Correcte heading hiërarchie: één `h1` (paginatitel) → `h2` (card titels), geen skips
+- Correcte landmarks: `header`, `nav` (hoofdnavigatie), `main`, `section` met `aria-label`
 - `:focus-visible` voor keyboard focus ring (alleen bij Tab navigatie)
 - `aria-label` op alle interactieve elementen
-- `role="navigation"`, `role="img"`, `role="banner"` waar van toepassing
-- `aria-expanded`, `aria-current`, `aria-controls` voor state
+- `role="img"` op data visualisaties met beschrijvend label
+- `aria-expanded`, `aria-current`, `aria-controls`, `aria-haspopup`, `aria-pressed`, `aria-selected` voor state
+- Native popover semantiek: `role="listbox"`/`role="option"` op de maand dropdown
+- `aria-live="polite"` op gefilterde tabel resultaten
+- `.sr-only` labels op lege tabel headers
 - Contrast ratio's: minstens 4.5:1 voor tekst, 3:1 voor UI elementen
 - Keyboard navigatie: Tab, Enter, Space, Escape
 - `hanging-punctuation: first last` voor mooiere typografie

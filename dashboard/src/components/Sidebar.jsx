@@ -79,11 +79,10 @@ function Sidebar({ mobileOpen, onClose }) {
   return (
     <>
       {mobileOpen && <div className="sidebar-overlay" onClick={onClose} aria-hidden="true" />}
-      <aside
+      <nav
         id="sidebar-nav"
         className={`sidebar ${mobileOpen ? 'sidebar--open' : ''}`}
-        role="navigation"
-        aria-label="Hoofdnavigatie"
+        aria-label="Main navigation"
         onKeyDown={handleKeyDown}
       >
         <div className="sidebar__brand">
@@ -99,21 +98,21 @@ function Sidebar({ mobileOpen, onClose }) {
             type="text"
             placeholder="Search"
             className="sidebar__search-input"
-            aria-label="Zoeken"
+            aria-label="Search navigation"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <span className="sidebar__search-shortcut" aria-hidden="true">⌘F</span>
         </div>
 
-        <nav className="sidebar__nav">
+        <div className="sidebar__nav">
           {renderSection('MENU', filteredMenu)}
           {renderSection('ACCOUNT', filteredAccount)}
           {renderSection('SUPPORT', filteredSupport)}
           {!hasResults && searchQuery.trim() && (
             <p className="sidebar__no-results">No matches found</p>
           )}
-        </nav>
+        </div>
 
         <div className="sidebar__footer">
           <button className="sidebar__logout" type="button">
@@ -121,7 +120,7 @@ function Sidebar({ mobileOpen, onClose }) {
             <span>Logout</span>
           </button>
         </div>
-      </aside>
+      </nav>
     </>
   );
 }

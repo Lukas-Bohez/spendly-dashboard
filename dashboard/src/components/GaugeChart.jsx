@@ -35,7 +35,7 @@ export default function GaugeChart() {
     <article className="gauge-card" aria-label="Financial Balance — 48% from yesterday">
       <div className="gauge-card__header">
         <div className="gauge-card__title-group">
-          <h3 className="gauge-card__title">Financial Balance</h3>
+          <h2 className="gauge-card__title">Financial Balance</h2>
           <Info className="gauge-card__info" size={14} />
         </div>
         <button className="gauge-card__menu-btn" type="button" aria-label="More options">

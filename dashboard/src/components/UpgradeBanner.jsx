@@ -7,7 +7,7 @@ export default function UpgradeBanner() {
   if (!visible) return null;
 
   return (
-    <div className="upgrade-banner" role="banner">
+    <div className="upgrade-banner">
       <div className="upgrade-banner__content">
         <Info className="upgrade-banner__icon" size={18} />
         <span className="upgrade-banner__text">Unlock the full potential and elevate your experience today!</span>

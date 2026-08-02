@@ -1,5 +1,5 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
-import { Info, MoreVertical, Search, Filter } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import { Info, MoreVertical, Search, Filter, Check } from 'lucide-react';
 import './TransactionsTable.css';
 
 const TRANSACTIONS = [
@@ -9,40 +9,76 @@ const TRANSACTIONS = [
   { id: 'SPD - 6391', amount: '$365.000', status: 'Paid' },
 ];
 
-export default function TransactionsTable() {
-  const [filterOpen, setFilterOpen] = useState(false);
-  const [filterPos, setFilterPos] = useState({ top: 0, left: 0 });
-  const [searchQuery, setSearchQuery] = useState('');
-  const filterBtnRef = useRef(null);
+const STATUS_FILTERS = ['All', 'Paid', 'Pending'];
 
-  const toggleFilter = useCallback(() => {
-    if (!filterOpen && filterBtnRef.current) {
-      const rect = filterBtnRef.current.getBoundingClientRect();
-      setFilterPos({ top: rect.bottom + 8, left: rect.left });
-    }
-    setFilterOpen(!filterOpen);
-  }, [filterOpen]);
+export default function TransactionsTable() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState('All');
+  const [filterOpen, setFilterOpen] = useState(false);
+  const filterBtnRef = useRef(null);
+  const filterPopoverRef = useRef(null);
+
+  /* ✅ Popover API — native popover via `popovertarget` op de filter knop.
+     State wordt gesynct via de `toggle` events (light-dismiss, Escape). */
+  useEffect(() => {
+    const popover = filterPopoverRef.current;
+    const btn = filterBtnRef.current;
+    if (!popover || !btn) return;
+
+    const supportsAnchor = window.CSS?.supports?.('anchor-name: --btn');
+
+    const handleBeforeToggle = (e) => {
+      if (e.newState !== 'open' || supportsAnchor) return;
+      const rect = btn.getBoundingClientRect();
+      popover.style.insetInlineStart = `${rect.left}px`;
+      popover.style.insetBlockStart = `${rect.bottom + 8}px`;
+    };
+
+    const handleToggle = (e) => setFilterOpen(e.newState === 'open');
+
+    popover.addEventListener('beforetoggle', handleBeforeToggle);
+    popover.addEventListener('toggle', handleToggle);
+    return () => {
+      popover.removeEventListener('beforetoggle', handleBeforeToggle);
+      popover.removeEventListener('toggle', handleToggle);
+    };
+  }, []);
 
   useEffect(() => {
-    if (!filterOpen) return;
-    const handleClose = () => setFilterOpen(false);
-    window.addEventListener('scroll', handleClose, true);
-    window.addEventListener('resize', handleClose);
-    return () => {
-      window.removeEventListener('scroll', handleClose, true);
-      window.removeEventListener('resize', handleClose);
+    const popover = filterPopoverRef.current;
+    if (!popover) return;
+    const close = () => {
+      if (popover.matches(':popover-open')) popover.hidePopover();
     };
-  }, [filterOpen]);
+    window.addEventListener('scroll', close, true);
+    window.addEventListener('resize', close);
+    return () => {
+      window.removeEventListener('scroll', close, true);
+      window.removeEventListener('resize', close);
+    };
+  }, []);
 
-  const filteredTransactions = searchQuery.trim()
-    ? TRANSACTIONS.filter(tx => tx.id.toLowerCase().includes(searchQuery.toLowerCase()))
-    : TRANSACTIONS;
+  const selectStatus = (status) => {
+    setStatusFilter(status);
+    // Guard: hidePopover gooit een error als de popover al gesloten is
+    if (filterPopoverRef.current?.matches(':popover-open')) {
+      filterPopoverRef.current.hidePopover();
+    }
+  };
+
+  /* Live filteren op Order ID (search) én Status (filter popover) */
+  const filteredTransactions = TRANSACTIONS.filter((tx) => {
+    const matchesSearch = !searchQuery.trim()
+      || tx.id.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = statusFilter === 'All' || tx.status === statusFilter;
+    return matchesSearch && matchesStatus;
+  });
 
   return (
-    <article className="transactions-card" aria-label="Recente transacties">
+    <article className="transactions-card" aria-labelledby="transactions-title">
       <div className="transactions-card__header">
         <div className="transactions-card__title-group">
-          <h3 className="transactions-card__title">Recent Transactions</h3>
+          <h2 className="transactions-card__title" id="transactions-title">Recent Transactions</h2>
           <Info className="transactions-card__info" size={14} />
         </div>
         <button className="transactions-card__menu-btn" type="button" aria-label="More options">
@@ -61,28 +97,56 @@ export default function TransactionsTable() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <span className="transactions-card__search-shortcut">⌘F</span>
+          <span className="transactions-card__search-shortcut" aria-hidden="true">⌘F</span>
         </div>
-        <button ref={filterBtnRef} className="transactions-card__filter-btn" onClick={toggleFilter} type="button">
+
+        <button
+          ref={filterBtnRef}
+          className="transactions-card__filter-btn"
+          popovertarget="filter-popover"
+          aria-expanded={filterOpen}
+          type="button"
+        >
           <Filter size={16} />
           Filter
+          {statusFilter !== 'All' && (
+            <span className="transactions-card__filter-badge">{statusFilter}</span>
+          )}
         </button>
-        {filterOpen && (
-          <div className="transactions-card__filter-popover" style={{ position: 'fixed', top: `${filterPos.top}px`, left: `${filterPos.left}px` }}>
-            <p>Filter opties</p>
-          </div>
-        )}
+
+        <div
+          id="filter-popover"
+          ref={filterPopoverRef}
+          className="transactions-card__filter-popover"
+          popover="auto"
+          role="group"
+          aria-label="Filter by status"
+        >
+          <p className="transactions-card__filter-title">Status</p>
+          {STATUS_FILTERS.map((status) => (
+            <button
+              key={status}
+              className={`transactions-card__filter-option ${statusFilter === status ? 'transactions-card__filter-option--active' : ''}`}
+              onClick={() => selectStatus(status)}
+              aria-pressed={statusFilter === status}
+              type="button"
+            >
+              <span>{status === 'All' ? 'All statuses' : status}</span>
+              {statusFilter === status && <Check size={14} aria-hidden="true" />}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="transactions-card__table-wrapper">
+      <div className="transactions-card__table-wrapper" aria-live="polite">
         <table className="transactions-card__table">
           <thead>
             <tr>
-              <th scope="col"></th>
+              <th scope="col"><span className="sr-only">Select</span></th>
               <th scope="col">ORDER ID</th>
               <th scope="col">AMOUNT</th>
               <th scope="col">STATUS</th>
-              <th scope="col"></th>
+              <th scope="col"><span className="sr-only">Actions</span></th>
             </tr>
           </thead>
           <tbody>
@@ -105,7 +169,7 @@ export default function TransactionsTable() {
             ))}
             {filteredTransactions.length === 0 && (
               <tr>
-                <td colSpan="5" style={{ textAlign: 'center', padding: 'var(--space-4)', color: 'var(--color-text-meta)' }}>
+                <td colSpan="5" className="transactions-card__empty">
                   No transactions found
                 </td>
               </tr>

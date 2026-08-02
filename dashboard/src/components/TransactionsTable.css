@@ -135,28 +135,100 @@
     }
   }
 
-  /* Filter popover — positioned via JS inline style */
+  & .transactions-card__filter-badge {
+    padding: 1px var(--space-2);
+    border-radius: var(--radius-full);
+    background-color: var(--color-accent-primary-light);
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-meta);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* ✅ Filter popover — Popover API (native top-layer, light-dismiss, Escape)
+     ✅ @starting-style — open/sluit animatie */
   & .transactions-card__filter-popover {
-    z-index: var(--z-popover);
-    padding: var(--space-4);
+    margin: 0;
+    padding: var(--space-2);
+    min-inline-size: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     border: 1px solid var(--color-border-default);
     border-radius: var(--radius-md);
     background-color: var(--color-bg-surface);
     box-shadow: var(--shadow-lg);
     font-size: var(--font-size-small);
     color: var(--color-text-primary);
-    animation: popoverIn 0.2s var(--ease-spring);
+
+    opacity: 0;
+    translate: 0 -8px;
+    transition: opacity 0.2s var(--ease-spring), translate 0.2s var(--ease-spring),
+      display 0.2s allow-discrete, overlay 0.2s allow-discrete;
   }
 
-  @keyframes popoverIn {
-    from {
+  & .transactions-card__filter-popover:popover-open {
+    opacity: 1;
+    translate: 0 0;
+
+    @starting-style {
       opacity: 0;
       translate: 0 -8px;
     }
-    to {
-      opacity: 1;
-      translate: 0 0;
+  }
+
+  /* ✅ Anchor Positioning — popover "vastgeklikt" aan de filter knop.
+     In browsers zonder support doet de JS fallback dit (zie TransactionsTable.jsx) */
+  @supports (anchor-name: --btn) {
+    & .transactions-card__filter-btn {
+      anchor-name: --filter-trigger;
     }
+
+    & .transactions-card__filter-popover {
+      position-anchor: --filter-trigger;
+      position-area: bottom left;
+      position-try: flip-block;
+    }
+  }
+
+  & .transactions-card__filter-title {
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--font-size-meta);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-meta);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  & .transactions-card__filter-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    inline-size: 100%;
+    padding: var(--space-2) var(--space-3);
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-small);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-accent-primary-light);
+      color: var(--color-accent-primary);
+    }
+
+    &.transactions-card__filter-option--active {
+      color: var(--color-accent-primary);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+
+  & .transactions-card__empty {
+    text-align: center;
+    padding: var(--space-4);
+    color: var(--color-text-meta);
   }
 
   & .transactions-card__table-wrapper {
