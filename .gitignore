@@ -4,3 +4,11 @@ dist/
 .DS_Store
 *.log
 Thumbs.db
+
+# Cursusmateriaal (slides/PDF's van de lectoren — copyright Howest)
+# Blijft lokaal voor eigen studie, hoort niet in een publieke repo
+files/
+
+# Grote redundante Figma extract-archieven (losse extracten blijven wel)
+figma/*_extract.zip
+figma/extras_extract/

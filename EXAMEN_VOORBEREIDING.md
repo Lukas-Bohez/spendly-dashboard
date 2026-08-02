@@ -12,10 +12,17 @@
 | **Deadline indienen** | **Maandag 17 augustus 2026 om 9:00** |
 | **Waar indienen** | Online via het digitale leerplatform van school (**Leho**/Canvas) — upload in de opdracht-module van Interaction Design |
 | **Opdracht deadline** | Volgens de opdrachtfiche: *"Deadline: dag van het examen"* → dus 17 augustus, 9:00 's ochtends |
-| **Mondeling examen** | Zelfde examenperiode; **exact uur en lokaal staan NIET in de cursusbestanden** → check je examenrooster op Leho / de Howest examenplanning |
+| **Examenperiode** | **Derde examenperiode: 17 augustus – 5 september 2026** (bron: [Howest academische kalender 2025-26](https://www.howest.be/nl/academische-kalender)) — jouw deadline valt op de **eerste dag** van die periode, je mondeling examen valt dus zeer waarschijnlijk in diezelfde eerste week |
+| **Deliberatie/punten** | Bekendmaking in de week van 1–5 september en 7–12 september 2026 |
+| **Mondeling examen** | Zelfde examenperiode; **exact uur en lokaal staan NIET in de cursusbestanden** → check je persoonlijke examenrooster op Leho / de Howest examenplanning |
 | **Lectoren** | Martijn Loth (moduleverantwoordelijke), Simon Coudeville |
 
 ⚠️ **Actie vereist:** zoek het precieze lokaal en tijdstip van het mondeling examen op in je rooster — dat staat niet in de cursus-PDF's, enkel in de officiële examenplanning.
+
+### 🔍 Online opzoekwerk (2 augustus 2026)
+- Publieke zoekopdracht **"Lukas Bohez" Howest examen** → enkel je LinkedIn-profiel (MCT-student Howest) en je GitHub gevonden; **geen publieke examengegevens** (verwacht — roosters zitten achter login).
+- **Howest academische kalender** bevestigt: derde examenperiode = **17/08 t/m 05/09/2026**, voorafgegaan door zomerverlof (week 10/08–15/08, ma 15/08 = O.L.V. Hemelvaart, feestdag).
+- 📂 **Repo:** alles staat publiek op [github.com/Lukas-Bohez/spendly-dashboard](https://github.com/Lukas-Bohez/spendly-dashboard)
 
 ---
 
@@ -104,6 +111,8 @@ Vragen komen **over je eindopdracht** én **uit de cursus**. De theorie-PDF's in
 | View transitions | `View transitions.pdf` | View Transitions API basis |
 | CSS variables | `Theorie/CSS Variables.pdf` | Custom properties, cascade, theming |
 | React | `react-intro.pdf`, `react-routing.pdf`, `react-motion.pdf` | Componenten, state, props, hooks die je gebruikt (useState/useEffect/useRef) |
+
+> 📌 De `files/` map staat **bewust niet in de publieke GitHub repo** (cursusmateriaal van de lectoren) — hij staat nog gewoon lokaal op je pc, dus je studielijst blijft bruikbaar.
 
 ### CSS features die je moet kunnen toelichten (verplicht!)
 Je hebt er **26** in je project zitten — kies er minstens 2 en oefen de uitleg hard. Sterke kandidaten uit je code:
