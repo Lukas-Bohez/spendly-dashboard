@@ -181,6 +181,8 @@ Elke component is opgebouwd als een aparte module met eigen `.jsx` en `.css` bes
 - `.sr-only` labels op lege tabel headers
 - Contrast ratio's: minstens 4.5:1 voor tekst, 3:1 voor UI elementen
 - Keyboard navigatie: Tab, Enter, Space, Escape
+- `prefers-reduced-motion` gerespecteerd — animaties worden quasi-instant, eindtoestanden blijven correct
+- LineChart datapunten zijn focusbaar: toetsenbordgebruikers zien dezelfde tooltip bij focus als bij hover
 - `hanging-punctuation: first last` voor mooiere typografie
 
 ## Responsive

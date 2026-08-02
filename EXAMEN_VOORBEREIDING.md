@@ -5,19 +5,23 @@
 
 ---
 
-## 🗓️ Wanneer & Waar
+## 🗓️ Wanneer & Waar — ✅ BEVESTIGD via Leho ("Eindopdracht 2de zit")
 
 | Wat | Detail |
 |-----|--------|
-| **Deadline indienen** | **Maandag 17 augustus 2026 om 9:00** |
-| **Waar indienen** | Online via het digitale leerplatform van school (**Leho**/Canvas) — upload in de opdracht-module van Interaction Design |
-| **Opdracht deadline** | Volgens de opdrachtfiche: *"Deadline: dag van het examen"* → dus 17 augustus, 9:00 's ochtends |
-| **Examenperiode** | **Derde examenperiode: 17 augustus – 5 september 2026** (bron: [Howest academische kalender 2025-26](https://www.howest.be/nl/academische-kalender)) — jouw deadline valt op de **eerste dag** van die periode, je mondeling examen valt dus zeer waarschijnlijk in diezelfde eerste week |
+| **Deadline indienen** | **Dinsdag 18 augustus 2026 om 12:00 (middag)** |
+| **Waar indienen** | **Leho** (Canvas) → opdracht "Eindopdracht 2de zit" — **file upload**, bestandstype **zip** |
+| **Punten** | 100 |
+| **Indienvenster** | 26 juni 2026, 0:00 → **18 augustus 2026, 12:00** |
+| **Opdracht zegt** | *"Deadline: dag van het examen"* — dus de examendag = **18 augustus 2026** |
+| **Examenperiode** | **Derde examenperiode: 17 – 5 september 2026** (bron: [Howest academische kalender](https://www.howest.be/nl/academische-kalender)) — jouw examen valt in **week 1** daarvan |
 | **Deliberatie/punten** | Bekendmaking in de week van 1–5 september en 7–12 september 2026 |
-| **Mondeling examen** | Zelfde examenperiode; **exact uur en lokaal staan NIET in de cursusbestanden** → check je persoonlijke examenrooster op Leho / de Howest examenplanning |
+| **Mondeling examen** | Na de deadline; **exact uur en lokaal** → check je persoonlijke examenrooster op Leho |
 | **Lectoren** | Martijn Loth (moduleverantwoordelijke), Simon Coudeville |
 
 ⚠️ **Actie vereist:** zoek het precieze lokaal en tijdstip van het mondeling examen op in je rooster — dat staat niet in de cursus-PDF's, enkel in de officiële examenplanning.
+
+> 📤 **Over het zip-bestandstype:** Leho accepteert **zip**. De opdracht vraagt 2 zaken: de `.fig` file + een zip van de frontend. In Canvas kan je bij één submission meerdere bestanden toevoegen — voeg dus **beide** toe (1. `Design Interaction Design.fig`, 2. `spendly-frontend.zip`). Lukt dat niet, maak dan één master-zip met daarin beide.
 
 ### 🔍 Online opzoekwerk (2 augustus 2026)
 - Publieke zoekopdracht **"Lukas Bohez" Howest examen** → enkel je LinkedIn-profiel (MCT-student Howest) en je GitHub gevonden; **geen publieke examengegevens** (verwacht — roosters zitten achter login).
@@ -55,7 +59,7 @@
 
 - [ ] **Figma file** exporteren als `.fig` (File > Save As .fig...) → `figma/Design Interaction Design.fig` (ligt al klaar)
 - [ ] **Frontend zip** maken van de `dashboard/` map **ZONDER `node_modules`** (en zonder `dist/`)
-- [ ] Beide bestanden uploaden op Leho **voor maandag 17 augustus 2026, 9:00**
+- [ ] Beide bestanden uploaden op Leho **voor dinsdag 18 augustus 2026, 12:00**
 - [ ] Dubbelcheck: de zip bevat `index.html`, `package.json`, `src/`, `public/`, `DOCUMENTATION.md`, `FUTURE_CSS_FEATURES.md`
 
 ```powershell
@@ -91,7 +95,30 @@ Na een volledige audit tegen de rubric zijn deze zaken aangepakt:
 8. Inline styles voor "No transactions found" vervangen door een echte CSS class.
 9. `DOCUMENTATION.md` en `FUTURE_CSS_FEATURES.md` geüpdatet zodat ze exact overeenkomen met de code (belangrijk: de docent leest die mee!).
 
+### ♿ Extra accessibility ronde 2 (2 aug avond)
+10. **`prefers-reduced-motion` support** — wie "verminder beweging" aan heeft staan in zijn OS, krijgt quasi-instant animaties (eindtoestanden zoals de 48% gauge blijven correct).
+11. **Chart tooltips nu ook met toetsenbord bereikbaar** — elk datapunt in de LineChart is focusbaar (Tab) en toont bij focus dezelfde tooltip als bij hover, met `aria-label` per punt.
+
 **Build getest:** `npm run build` ✅ — dropdown, filter en dark mode geverifieerd in de browser ✅
+
+---
+
+## 🎯 100% Audit — status per rubric criterium
+
+| # | Criterium (10 pts) | Status | Wat is geverifieerd / wat moet JIJ nog checken |
+|---|--------------------|--------|-------------------------------------------------|
+| 1 | Design checklist | ⚠️ **Check in Figma** | Design volgt de checklist (zie `docs/assignment/designChecklist.md`). Let op: in de Figma-extract staan chart-labels van **19.79px** (geen modular scale waarde) en een Cambria Math glyph (⌘F) — check of die bewust zo zijn. |
+| 2 | Local variables | ⚠️ **Check in Figma** | De extract-plugin toonde `variables: []` — dat kan aan de plugin liggen, maar **verifieer zelf** dat je colors écht als local variables met 2 lagen (base + design tokens) staan en dat light/dark switch werkt in Figma. |
+| 3 | Figma file (components/variants/text styles) | ⚠️ **Check in Figma** | Extract toonde `components: 0`, `instances: 16` — **check dat je stat card / table row echte components met variants zijn** en dat álle tekst een local text style gebruikt. Dit zijn samen met #2 en #4 **30 van de 100 punten**! |
+| 4 | Auto layouts | ⚠️ **Check in Figma** | Test: sleep een card breder/smaller — schaalt de inhoud mee (geen vaste posities)? |
+| 5 | Afwerking | ✅ Frontend af | Detailniveau in code: consistente spacing tokens, hover/focus states, dark mode contrast getabeld. |
+| 6 | Accessibility | ✅ **Geverifieerd** | font-size 100% + rem overal, volledige keyboard-bediening (ook chart tooltips), focus-visible, skip link, landmarks, ARIA states, `prefers-reduced-motion`, `aria-live` tabel, `lang="en"` matcht content. |
+| 7 | CSS variables | ✅ **Geverifieerd** | 2 lagen in `tokens.css` (base oklch tokens + semantic tokens), dark theme via `[data-theme]` + `prefers-color-scheme`, `light-dark()` als progressive enhancement. |
+| 8 | Code quality | ✅ **Geverifieerd** | Component-structuur (jsx+css per component), CSS Grid layout (+ subgrid), responsive breakpoints + container queries, build zonder errors/warnings. |
+| 9 | Interactions | ✅ **Geverifieerd** | 8 interacties (≥2 vereist): sidebar live search, transacties live search, **status filter**, maand-dropdown, theme toggle, mobile menu, chart tooltips, gauge animatie. |
+| 10 | CSS features | ✅ **Geverifieerd** | 26 features gedocumenteerd in `FUTURE_CSS_FEATURES.md`; de Popover API feature was stiekem kapot en is **echt werkend** gemaakt + in browser getest. |
+
+**Samengevat:** frontend (criteria 5–10, 50 pts) zit zo goed als zeker snor. De 50 Figma-punten (criteria 1–4 + deel van 5) kan alleen jij bevestigen in Figma — loop de ⚠️-punten hierboven na, vooral components/variants/local variables.
 
 ---
 
@@ -138,7 +165,7 @@ Je hebt er **26** in je project zitten — kies er minstens 2 en oefen de uitleg
 - [ ] Dark/light mode testen + OS-instelling testen
 - [ ] Responsive checken in DevTools (desktop → tablet → mobile)
 - [ ] Figma `.fig` exporteren (laatste versie!)
-- [ ] Zip zonder `node_modules` maken en uploaden **voor 17/08 9:00**
+- [ ] Zip zonder `node_modules` maken en uploaden **voor 18/08 12:00**
 - [ ] 2 CSS features kiezen en hardop kunnen uitleggen aan de hand van je eigen code
 - [ ] Theorie-PDF's herlezen (tabel hierboven)
 - [ ] Examenrooster checken voor lokaal + uur mondeling

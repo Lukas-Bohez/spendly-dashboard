@@ -145,3 +145,17 @@
     border: 0;
   }
 }
+
+/* ── ✅ prefers-reduced-motion — respecteer de OS-instelling van de gebruiker.
+      Alle animaties/transities worden quasi-instant; eindtoestanden (bv. de
+      gauge-fill op 48%) blijven behouden via animation-fill-mode: forwards. ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

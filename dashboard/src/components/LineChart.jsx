@@ -90,7 +90,17 @@ export default function LineChart() {
             // Clamp tooltip Y so it doesn't overflow above the chart
             const tooltipTopY = Math.max(0, Math.min(incomeY, expenseY) - 70);
             return (
-              <g key={`points-${item.month}`} onMouseEnter={() => handleMouseEnter(i)} onMouseLeave={handleMouseLeave} style={{ cursor: 'pointer' }}>
+              // ✅ Ook met het toetsenbord bedienbaar: focus toont dezelfde tooltip als hover
+              <g
+                key={`points-${item.month}`}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseLeave={handleMouseLeave}
+                onFocus={() => handleMouseEnter(i)}
+                onBlur={handleMouseLeave}
+                tabIndex={0}
+                aria-label={`${item.month}: income $${item.income}, expense $${item.expense}`}
+                style={{ cursor: 'pointer' }}
+              >
                 <rect x={x - 20} y={TOP_MARGIN} width={40} height={chartAreaHeight} fill="transparent" />
                 {isHovered && <line x1={x} y1={TOP_MARGIN} x2={x} y2={TOP_MARGIN + chartAreaHeight} className="line-chart__hover-line" />}
                 <circle cx={x} cy={incomeY} r={isHovered ? 6 : 4} className="line-chart__point line-chart__point--income" />

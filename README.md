@@ -3,7 +3,7 @@
 Eindopdracht voor het opleidingsonderdeel **Interaction Design** (MCT — Howest), herexamenperiode augustus 2026.
 Bestaat uit **Deel 1: Design** (Figma) en **Deel 2: Frontend** (React + Vite), een nabouw van het [Spendly SaaS dashboard](https://dribbble.com/shots/25270785-SaaS-Dashboard-for-Business-Payments-Web-Application).
 
-> 👉 **Deadline: maandag 17 augustus 2026, 9:00** — zie [`EXAMEN_VOORBEREIDING.md`](EXAMEN_VOORBEREIDING.md) voor exameninfo, rubric, indienchecklist en studielijst.
+> 👉 **Deadline: dinsdag 18 augustus 2026, 12:00** (Leho — "Eindopdracht 2de zit", file upload, zip) — zie [`EXAMEN_VOORBEREIDING.md`](EXAMEN_VOORBEREIDING.md) voor exameninfo, rubric, indienchecklist en studielijst.
 
 ## 📁 Structuur
 
