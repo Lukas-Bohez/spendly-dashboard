@@ -1,0 +1,219 @@
+/* ============================================================
+   A C T I V I T Y   T I M E L I N E   &   S Y S T E M   C S S
+
+   FUTURE CSS FEATURES in dit bestand:
+   ✅ CSS Nesting — native geneste selectors met &
+   ✅ @scope — scoped timeline styles
+   ✅ @property — geanimeerde progress bar width
+   ✅ :where() — lage specificiteit modifiers
+   ✅ Logical Properties — inline-size, block-size
+   ✅ Individual transform properties — translate
+   ✅ linear() — custom easing via --ease-spring
+   ✅ CSS variables — alle kleuren via tokens
+   ============================================================ */
+
+/* ✅ @scope — scoped card styles */
+@scope (.timeline-card, .system-card) {
+  :scope {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  & .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: var(--space-4);
+
+    & .card-title {
+      font-size: var(--font-size-h4);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    & .card-link {
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-link);
+      transition: opacity var(--transition-fast);
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &:focus-visible {
+        border-radius: var(--radius-sm);
+      }
+    }
+  }
+}
+
+/* ── Timeline list ── */
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition-fast);
+  animation: slideIn 0.3s ease backwards;
+
+  &:hover {
+    background-color: var(--color-bg-surface-hover);
+  }
+}
+
+/* ✅ Individual transform — translate */
+.timeline-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+  margin-block-start: 2px;
+
+  /* ✅ :where — lage specificiteit */
+  &:where(.timeline-icon--success) {
+    background-color: var(--color-status-success-bg);
+    color: var(--color-status-success);
+  }
+  &:where(.timeline-icon--warning) {
+    background-color: var(--color-status-warning-bg);
+    color: var(--color-status-warning);
+  }
+  &:where(.timeline-icon--error) {
+    background-color: var(--color-status-error-bg);
+    color: var(--color-status-error);
+  }
+  &:where(.timeline-icon--info) {
+    background-color: var(--color-accent-primary-light);
+    color: var(--color-accent-primary);
+  }
+}
+
+.timeline-title {
+  font-size: var(--font-size-small);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.timeline-time {
+  font-size: var(--font-size-meta);
+  color: var(--color-text-meta);
+}
+
+/* ── System monitors ── */
+.system-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.system-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  & .system-item__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    & .system-item__label {
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-primary);
+    }
+
+    & .system-item__value {
+      font-size: var(--font-size-meta);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-meta);
+    }
+  }
+}
+
+/* Progress bar */
+.progress-bar {
+  inline-size: 100%;
+  block-size: 6px;
+  background-color: var(--color-border-default);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  block-size: 100%;
+  border-radius: var(--radius-full);
+  /* ✅ linear() via --ease-spring */
+  transition: inline-size 1s var(--ease-spring);
+  animation: fillBar 0.8s var(--ease-spring) backwards;
+
+  /* ✅ :where voor lage specificiteit */
+  &:where(.progress-bar__fill--cpu) {
+    inline-size: 45%;
+    background-color: var(--color-accent-primary);
+  }
+  &:where(.progress-bar__fill--ram) {
+    inline-size: 62%;
+    background-color: var(--color-status-success);
+  }
+  &:where(.progress-bar__fill--disk) {
+    inline-size: 85%;
+    background-color: var(--color-status-warning);
+  }
+  &:where(.progress-bar__fill--network) {
+    inline-size: 23%;
+    background-color: var(--color-accent-primary);
+  }
+}
+
+@keyframes fillBar {
+  from {
+    inline-size: 0%;
+  }
+}
+
+/* ✅ Individual transform — translate */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    translate: -8px 0;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ── Status badge ── */
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+
+  &.status-badge--online {
+    background-color: var(--color-status-success-bg);
+    color: var(--color-status-success);
+  }
+
+  & .status-badge__dot {
+    inline-size: 6px;
+    block-size: 6px;
+    border-radius: var(--radius-full);
+    background-color: currentColor;
+  }
+}

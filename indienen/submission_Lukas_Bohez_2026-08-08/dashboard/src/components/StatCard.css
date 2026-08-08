@@ -1,0 +1,131 @@
+/* ============================================================
+   S T A T   C A R D   C S S — Spendly Dashboard
+
+   FUTURE CSS FEATURES:
+   ✅ CSS Nesting — native geneste selectors met &
+   ✅ @scope — scoped card styles
+   ✅ Container Queries — responsive card
+   ✅ Individual Transforms — translate, scale
+   ✅ Logical Properties — inline-size, block-size
+   ============================================================ */
+
+@scope (.stat-card) {
+  :scope {
+    container-type: inline-size;
+    container-name: stat-card;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    translate: 0 0;
+    scale: 1;
+    transition: translate var(--transition-base), scale var(--transition-base), box-shadow var(--transition-base);
+
+    &:hover {
+      translate: 0 -4px;
+      scale: 1.01;
+      box-shadow: var(--shadow-lg);
+    }
+  }
+
+  & .stat-card__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-2);
+  }
+
+  & .stat-card__title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  & .stat-card__title {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-meta);
+    line-height: var(--line-height-normal);
+  }
+
+  & .stat-card__info-icon {
+    color: var(--color-text-meta);
+    cursor: help;
+    flex-shrink: 0;
+  }
+
+  & .stat-card__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 28px;
+    block-size: 28px;
+    color: var(--color-text-meta);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-surface-hover);
+      color: var(--color-text-primary);
+    }
+  }
+
+  & .stat-card__value {
+    font-size: var(--font-size-display);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    letter-spacing: -0.02em;
+  }
+
+  & .stat-card__change-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  & .stat-card__change-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-meta);
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--line-height-normal);
+
+    &:where(.stat-card__change-badge--positive) {
+      background-color: var(--color-status-success-bg);
+      color: var(--color-status-success);
+    }
+
+    &:where(.stat-card__change-badge--negative) {
+      background-color: var(--color-status-error-bg);
+      color: var(--color-status-error);
+    }
+  }
+
+  & .stat-card__change-text {
+    font-size: var(--font-size-meta);
+    color: var(--color-text-meta);
+    font-weight: var(--font-weight-regular);
+  }
+}
+
+/* ✅ @container — responsive card */
+@container stat-card (max-width: 220px) {
+  .stat-card__value {
+    font-size: var(--font-size-h1);
+  }
+
+  .stat-card__change-row {
+    flex-wrap: wrap;
+    gap: var(--space-1);
+  }
+}

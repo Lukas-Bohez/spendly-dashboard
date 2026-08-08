@@ -1,0 +1,368 @@
+/* ============================================================
+   SPENDLY DESIGN SYSTEM — DESIGN TOKENS
+   Gebaseerd op het Spendly dashboard design
+   2-laags model: Base tokens + Semantic tokens (Atlassian stijl)
+
+   FUTURE CSS FEATURES:
+   ✅ oklch() color space
+   ✅ @property — geanimeerde custom properties
+   ✅ @layer — cascade layers
+   ✅ light-dark() — theme switching
+   ✅ color-scheme
+   ✅ linear() — custom easing
+   ============================================================ */
+
+/* @property — FUTURE CSS FEATURE */
+@property --progress-animated {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --gauge-fill {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+/* Cascade layers */
+@layer reset, tokens, base, layout, components, utilities;
+
+/* ── Style Queries — FUTURE CSS: stijl elementen op basis van CSS variable waarden ── */
+@container style(--theme: dark) {
+  /* Extra overrides wanneer de parent container --theme: dark heeft */
+  .sidebar__brand-text {
+    text-shadow: 0 0 20px oklch(0.78 0.14 250 / 0.3);
+  }
+}
+
+/* ── calc-size() — FUTURE CSS: rekenen met intrinsieke groottes ── */
+/* Maakt animatie naar height: auto mogelijk */
+@supports (height: calc-size(auto, size)) {
+  .upgrade-banner {
+    max-block-size: calc-size(max-content, size);
+    overflow: hidden;
+    transition: max-block-size 0.3s ease;
+  }
+}
+
+@layer tokens {
+:root {
+  /* ── Base: Accent blauw (Spendly primary) ── */
+  --color-blue-50: oklch(0.97 0.01 250);
+  --color-blue-100: oklch(0.93 0.03 250);
+  --color-blue-200: oklch(0.87 0.06 250);
+  --color-blue-300: oklch(0.78 0.10 250);
+  --color-blue-400: oklch(0.70 0.14 250);
+  --color-blue-500: oklch(0.62 0.18 250);
+  --color-blue-600: oklch(0.52 0.16 250);
+  --color-blue-700: oklch(0.44 0.14 250);
+  --color-blue-800: oklch(0.35 0.10 250);
+  --color-blue-900: oklch(0.25 0.06 250);
+
+  /* ── Base: Groen (positief/income) ── */
+  --color-green-50: oklch(0.96 0.04 155);
+  --color-green-100: oklch(0.90 0.06 155);
+  --color-green-400: oklch(0.65 0.16 155);
+  --color-green-500: oklch(0.55 0.16 155);
+  --color-green-600: oklch(0.45 0.14 155);
+
+  /* ── Base: Rood (negatief/expense) ── */
+  --color-red-50: oklch(0.96 0.03 25);
+  --color-red-100: oklch(0.90 0.05 25);
+  --color-red-400: oklch(0.62 0.18 25);
+  --color-red-500: oklch(0.53 0.20 25);
+  --color-red-600: oklch(0.44 0.17 25);
+
+  /* ── Base: Oranje (warning/pending) ── */
+  --color-orange-50: oklch(0.96 0.06 70);
+  --color-orange-100: oklch(0.90 0.08 70);
+  --color-orange-400: oklch(0.70 0.14 70);
+  --color-orange-500: oklch(0.60 0.16 70);
+
+  /* ── Base: Grijswaarden (met subtiele blauwe tint) ── */
+  --color-neutral-0: oklch(1.00 0.002 250);
+  --color-neutral-50: oklch(0.97 0.003 250);
+  --color-neutral-100: oklch(0.94 0.004 250);
+  --color-neutral-200: oklch(0.90 0.005 250);
+  --color-neutral-300: oklch(0.82 0.005 250);
+  --color-neutral-400: oklch(0.72 0.005 250);
+  --color-neutral-500: oklch(0.60 0.005 250);
+  --color-neutral-600: oklch(0.50 0.005 250);
+  --color-neutral-700: oklch(0.40 0.005 250);
+  --color-neutral-800: oklch(0.30 0.004 250);
+  --color-neutral-900: oklch(0.20 0.004 250);
+  --color-neutral-950: oklch(0.12 0.003 250);
+
+  /* ── Base: Sidebar donker ── */
+  --color-sidebar-bg: oklch(0.98 0.003 250);
+  --color-sidebar-fg: oklch(0.30 0.005 250);
+  --color-sidebar-fg-muted: oklch(0.55 0.005 250);
+  --color-sidebar-active-bg: oklch(0.93 0.03 250);
+  --color-sidebar-active-fg: oklch(0.45 0.14 250);
+}
+}
+
+@layer tokens {
+:root {
+  /* ── Semantic: Achtergronden ── */
+  --color-bg-app: var(--color-neutral-100);
+  --color-bg-surface: var(--color-neutral-0);
+  --color-bg-surface-hover: var(--color-neutral-50);
+  --color-bg-sidebar: var(--color-sidebar-bg);
+  --color-bg-card: var(--color-neutral-0);
+  --color-bg-banner: var(--color-blue-100);
+
+  /* ─ Semantic: Tekst ── */
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-meta: var(--color-neutral-500);
+  --color-text-inverse: var(--color-neutral-0);
+  --color-text-on-accent: var(--color-neutral-0);
+  --color-text-link: var(--color-blue-600);
+  --color-text-sidebar: var(--color-sidebar-fg);
+  --color-text-sidebar-muted: var(--color-sidebar-fg-muted);
+  --color-text-sidebar-active: var(--color-sidebar-active-fg);
+
+  /* ── Semantic: Accent ── */
+  --color-accent-primary: var(--color-blue-600);
+  --color-accent-primary-hover: var(--color-blue-700);
+  --color-accent-primary-light: var(--color-blue-100);
+  --color-accent-gradient-start: var(--color-blue-500);
+  --color-accent-gradient-end: oklch(0.55 0.20 270);
+
+  /* ✅ Color Functions — FUTURE CSS: color-mix & relative colors */
+  /* Maak een hover-variant door 30% wit te mixen met de accent kleur */
+  --color-accent-soft: color-mix(in oklch, var(--color-accent-primary) 70%, white);
+  /* Relatieve kleur: neem accent, verhoog lightness met 20% */
+  --color-accent-tinted: oklch(from var(--color-accent-primary) calc(l + 0.15) c h);
+
+  /* ── Semantic: Status ── */
+  --color-status-success: var(--color-green-600);
+  --color-status-success-bg: var(--color-green-100);
+  --color-status-error: var(--color-red-600);
+  --color-status-error-bg: var(--color-red-100);
+  --color-status-warning: var(--color-orange-500);
+  --color-status-warning-bg: var(--color-orange-100);
+  --color-status-paid: var(--color-green-600);
+  --color-status-paid-bg: var(--color-green-100);
+  --color-status-pending: var(--color-orange-500);
+  --color-status-pending-bg: var(--color-orange-100);
+
+  /* ── Semantic: Borders ── */
+  --color-border-default: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-light: var(--color-neutral-100);
+
+  /* ── Semantic: Chart kleuren ── */
+  --color-chart-income: var(--color-green-500);
+  --color-chart-expense: var(--color-blue-600);
+  --color-chart-profit: var(--color-blue-600);
+  --color-chart-profit-today: var(--color-blue-300);
+  --color-chart-for-week: var(--color-neutral-200);
+  --color-chart-vat: var(--color-blue-700);
+  --color-chart-employee: var(--color-blue-400);
+  --color-chart-services: var(--color-blue-200);
+
+  /* ── Semantic: Shadows ── */
+  --shadow-sm: 0 1px 2px oklch(0.20 0.004 250 / 0.04);
+  --shadow-md: 0 2px 8px oklch(0.20 0.004 250 / 0.06);
+  --shadow-lg: 0 4px 16px oklch(0.20 0.004 250 / 0.08);
+
+  /* ── Semantic: Focus ── */
+  --color-focus-ring: var(--color-blue-500);
+
+  /* ── Spacing (8px baseline grid) ── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ── Border radius ── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* ── Typografie (Inter) ── */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'SF Mono', 'Fira Code', monospace;
+
+  --font-size-meta: 0.75rem;
+  --font-size-small: 0.8125rem;
+  --font-size-body: 0.875rem;
+  --font-size-ui: 0.9375rem;
+  --font-size-h4: 1rem;
+  --font-size-h3: 1.125rem;
+  --font-size-h2: 1.25rem;
+  --font-size-h1: 1.5rem;
+  --font-size-display: 1.75rem;
+  --font-size-amount: 1.5rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* ── Transitions ── */
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce: linear(0, 0.004, 0.016, 0.035, 0.063, 0.098, 0.141, 0.191, 0.25, 0.316, 0.391, 0.473, 0.563, 0.66, 0.766, 0.879, 1);
+
+  /* ── Z-index ── */
+  --z-sidebar: 100;
+  --z-header: 50;
+  --z-popover: 200;
+  --z-modal: 300;
+}
+}
+
+/* light-dark() — FUTURE CSS FEATURE */
+@layer tokens {
+@supports (color: light-dark(black, white)) {
+  :root {
+    --color-bg-app: light-dark(var(--color-neutral-100), var(--color-neutral-950));
+    --color-bg-surface: light-dark(var(--color-neutral-0), var(--color-neutral-900));
+    --color-text-primary: light-dark(var(--color-neutral-900), var(--color-neutral-100));
+  }
+}
+}
+
+/* Dark theme */
+@layer tokens {
+/* Dark theme — matches Figma "Design Dark" frame */
+[data-theme='dark'] {
+  --color-bg-app: oklch(0.14 0.008 250);
+  --color-bg-surface: oklch(0.18 0.008 250);
+  --color-bg-surface-hover: oklch(0.22 0.01 250);
+  --color-bg-card: oklch(0.20 0.01 250);
+  --color-bg-sidebar: oklch(0.11 0.006 250);
+  --color-bg-banner: oklch(0.22 0.06 250);
+
+  --color-text-primary: oklch(0.95 0.002 250);
+  --color-text-secondary: oklch(0.78 0.006 250);
+  --color-text-meta: oklch(0.68 0.006 250);
+  --color-text-on-accent: oklch(0.98 0.002 250);
+  --color-text-inverse: oklch(0.15 0.005 250);
+  --color-text-link: var(--color-blue-400);
+  --color-text-sidebar: oklch(0.92 0.004 250);
+  --color-text-sidebar-muted: oklch(0.68 0.006 250);
+  --color-text-sidebar-active: oklch(0.82 0.12 250);
+  --color-sidebar-active-bg: oklch(0.22 0.06 250);
+
+  --color-accent-primary: var(--color-blue-500);
+  --color-accent-primary-hover: var(--color-blue-400);
+  --color-accent-primary-light: oklch(0.22 0.08 250);
+  --color-accent-gradient-start: var(--color-blue-400);
+  --color-accent-gradient-end: oklch(0.60 0.18 270);
+
+  --color-status-success: var(--color-green-400);
+  --color-status-success-bg: oklch(0.24 0.06 155);
+  --color-status-error: oklch(0.72 0.16 25);
+  --color-status-error-bg: oklch(0.24 0.05 25);
+  --color-status-warning: var(--color-orange-400);
+  --color-status-warning-bg: oklch(0.24 0.05 70);
+  --color-status-paid: var(--color-green-400);
+  --color-status-paid-bg: oklch(0.24 0.06 155);
+  --color-status-pending: var(--color-orange-400);
+  --color-status-pending-bg: oklch(0.24 0.05 70);
+
+  --color-chart-income: oklch(0.65 0.14 155);
+  --color-chart-expense: var(--color-blue-400);
+  --color-chart-profit: var(--color-blue-400);
+  --color-chart-profit-today: var(--color-blue-500);
+  --color-chart-for-week: oklch(0.42 0.01 250);
+  --color-chart-vat: var(--color-blue-500);
+  --color-chart-employee: var(--color-blue-400);
+  --color-chart-services: oklch(0.75 0.06 250);
+
+  --color-border-default: oklch(0.30 0.01 250);
+  --color-border-strong: oklch(0.40 0.012 250);
+  --color-border-light: oklch(0.24 0.008 250);
+
+  --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.30);
+  --shadow-md: 0 2px 8px oklch(0 0 0 / 0.35);
+  --shadow-lg: 0 4px 16px oklch(0 0 0 / 0.45);
+
+  --color-focus-ring: var(--color-blue-400);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg-app: oklch(0.14 0.008 250);
+    --color-bg-surface: oklch(0.18 0.008 250);
+    --color-bg-surface-hover: oklch(0.22 0.01 250);
+    --color-bg-card: oklch(0.20 0.01 250);
+    --color-bg-sidebar: oklch(0.11 0.006 250);
+    --color-bg-banner: oklch(0.22 0.06 250);
+
+    --color-text-primary: oklch(0.95 0.002 250);
+    --color-text-secondary: oklch(0.78 0.006 250);
+    --color-text-meta: oklch(0.68 0.006 250);
+    --color-text-on-accent: oklch(0.98 0.002 250);
+    --color-text-inverse: oklch(0.15 0.005 250);
+    --color-text-link: var(--color-blue-400);
+    --color-text-sidebar: oklch(0.92 0.004 250);
+    --color-text-sidebar-muted: oklch(0.68 0.006 250);
+    --color-text-sidebar-active: oklch(0.82 0.12 250);
+    --color-sidebar-active-bg: oklch(0.22 0.06 250);
+
+    --color-accent-primary: var(--color-blue-500);
+    --color-accent-primary-hover: var(--color-blue-400);
+    --color-accent-primary-light: oklch(0.22 0.08 250);
+
+    --color-status-success: var(--color-green-400);
+    --color-status-success-bg: oklch(0.24 0.06 155);
+    --color-status-error: oklch(0.72 0.16 25);
+    --color-status-error-bg: oklch(0.24 0.05 25);
+    --color-status-warning: var(--color-orange-400);
+    --color-status-warning-bg: oklch(0.24 0.05 70);
+    --color-status-paid: var(--color-green-400);
+    --color-status-paid-bg: oklch(0.24 0.06 155);
+    --color-status-pending: var(--color-orange-400);
+    --color-status-pending-bg: oklch(0.24 0.05 70);
+
+    --color-chart-income: oklch(0.65 0.14 155);
+    --color-chart-expense: var(--color-blue-400);
+    --color-chart-profit: var(--color-blue-400);
+    --color-chart-profit-today: var(--color-blue-500);
+    --color-chart-for-week: oklch(0.35 0.008 250);
+    --color-chart-vat: var(--color-blue-500);
+    --color-chart-employee: var(--color-blue-400);
+    --color-chart-services: oklch(0.75 0.06 250);
+
+    --color-border-default: oklch(0.30 0.01 250);
+    --color-border-strong: oklch(0.38 0.012 250);
+    --color-border-light: oklch(0.24 0.008 250);
+
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 0.30);
+    --shadow-md: 0 2px 8px oklch(0 0 0 / 0.35);
+    --shadow-lg: 0 4px 16px oklch(0 0 0 / 0.45);
+
+    --color-focus-ring: var(--color-blue-400);
+
+    color-scheme: dark;
+  }
+}
+}
+
+@layer tokens {
+:root[data-theme='light'] { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
+:root { color-scheme: light dark; }
+}

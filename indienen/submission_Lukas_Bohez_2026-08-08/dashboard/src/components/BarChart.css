@@ -1,0 +1,107 @@
+/* ============================================================
+   B A R C H A R T   +   D O N U T C H A R T   C S S
+
+   FUTURE CSS FEATURES in dit bestand:
+   ✅ Container Queries (@container) — adaptieve chart layout
+   ✅ CSS Nesting — native geneste selectors met &
+   ✅ @scope — scoped styles voor chart-card
+   ✅ :where() & :is() — lage specificiteit selectors
+   ✅ Logical Properties — inset, inline-size, block-size
+   ✅ CSS variables — alle kleuren via design tokens
+   ✅ Individual transform properties — scale, translate
+   ============================================================ */
+
+/* ✅ @scope — FUTURE CSS FEATURE: scope alles binnen .chart-card */
+@scope (.chart-card) {
+  :scope {
+    container-type: inline-size;
+    container-name: chart-card;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  & .chart-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: var(--space-4);
+    flex-wrap: wrap;
+    gap: var(--space-2);
+
+    & .chart-card__title {
+      font-size: var(--font-size-h4);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    & .chart-card__legend {
+      display: flex;
+      gap: var(--space-4);
+    }
+  }
+
+  & .chart-card__body {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* ✅ :where() — lage specificiteit */
+:where(.legend-item) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-meta);
+  color: var(--color-text-meta);
+}
+
+/* ✅ :is() — groepeer met hoogste specificiteit */
+:is(.legend-dot--bar, .legend-dot--donut-1, .legend-dot--donut-2, .legend-dot--donut-3) {
+  inline-size: 10px;
+  block-size: 10px;
+  border-radius: 3px;
+}
+
+.legend-dot--bar {
+  background-color: var(--color-accent-primary);
+}
+
+.legend-dot--donut-1 {
+  background-color: var(--color-accent-primary);
+}
+
+.legend-dot--donut-2 {
+  background-color: var(--color-status-success);
+}
+
+.legend-dot--donut-3 {
+  background-color: var(--color-status-warning);
+}
+
+/* ✅ Individual transform properties */
+.bar-group {
+  transform-origin: center bottom;
+
+  &:hover {
+    scale: 1 1.05;
+    translate: 0 -2px;
+    transition: scale 200ms var(--ease-spring),
+                translate 200ms var(--ease-spring);
+  }
+}
+
+.bar-group:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ✅ @container — adapteer chart op kleine breedte */
+@container chart-card (max-width: 350px) {
+  .chart-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

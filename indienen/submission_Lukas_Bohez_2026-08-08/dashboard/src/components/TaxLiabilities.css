@@ -1,0 +1,219 @@
+/* ============================================================
+   T A X   L I A B I L I T I E S   C S S
+
+   FUTURE CSS FEATURES:
+   ✅ CSS Nesting — native geneste selectors
+   ✅ @scope — scoped styles
+   ✅ @property — geanimeerde stacked bar segments
+   ✅ :where() — lage specificiteit modifiers
+   ✅ Logical Properties — inline-size, margin-block
+   ✅ Container Queries — responsive layout
+   ============================================================ */
+
+@scope (.tax-card) {
+  :scope {
+    container-type: inline-size;
+    container-name: tax-card;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+  }
+
+  & .tax-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-block-end: var(--space-4);
+
+    & .tax-card__title-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    & .tax-card__title {
+      font-size: var(--font-size-h4);
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    & .tax-card__info {
+      color: var(--color-text-meta);
+      cursor: help;
+    }
+
+    & .tax-card__controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    & .tax-card__period-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-secondary);
+      background-color: var(--color-bg-surface);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-bg-surface-hover);
+      }
+    }
+
+    & .tax-card__menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      inline-size: 28px;
+      block-size: 28px;
+      color: var(--color-text-meta);
+      border-radius: var(--radius-sm);
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-bg-surface-hover);
+      }
+    }
+  }
+
+  & .tax-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  & .tax-card__total {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+  }
+
+  & .tax-card__total-value {
+    font-size: var(--font-size-display);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+  }
+
+  & .tax-card__total-label {
+    font-size: var(--font-size-meta);
+    color: var(--color-text-meta);
+  }
+
+  /* Stacked horizontal bar */
+  & .tax-card__stacked-bar {
+    display: flex;
+    inline-size: 100%;
+    block-size: 12px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    background-color: var(--color-border-light);
+  }
+
+  & .tax-card__stacked-segment {
+    block-size: 100%;
+    transition: inline-size 0.8s var(--ease-spring);
+    animation: stackFill 1s var(--ease-spring) backwards;
+  }
+
+  & .tax-card__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  & .tax-card__legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-secondary);
+  }
+
+  & .tax-card__legend-dot {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: var(--radius-full);
+  }
+
+  & .tax-card__legend-value {
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+  }
+
+  & .tax-card__table-wrapper {
+    overflow-x: auto;
+  }
+
+  & .tax-card__table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    font-size: var(--font-size-small);
+
+    & thead th {
+      padding: var(--space-2) var(--space-3);
+      text-align: start;
+      font-size: var(--font-size-meta);
+      font-weight: var(--font-weight-medium);
+      color: var(--color-text-meta);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-block-end: 1px solid var(--color-border-default);
+    }
+
+    & tbody tr {
+      border-block-end: 1px solid var(--color-border-light);
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--color-bg-surface-hover);
+      }
+    }
+
+    & tbody td {
+      padding: var(--space-3);
+      color: var(--color-text-primary);
+    }
+
+    & .tax-card__status {
+      display: inline-block;
+      padding: 2px var(--space-2);
+      font-size: var(--font-size-meta);
+      font-weight: var(--font-weight-medium);
+      border-radius: var(--radius-full);
+
+      &:where(.tax-card__status--success) {
+        background-color: var(--color-status-paid-bg);
+        color: var(--color-status-paid);
+      }
+    }
+  }
+}
+
+/* ✅ @property — FUTURE CSS FEATURE: geanimeerde stacked bar */
+@property --stack-fill {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+@keyframes stackFill {
+  from {
+    inline-size: 0% !important;
+  }
+}
+
+/* ✅ @container — responsive */
+@container tax-card (max-width: 400px) {
+  .tax-card__legend {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}

@@ -1,0 +1,179 @@
+/* ============================================================
+   G A U G E   C H A R T   C S S — Spendly Dashboard
+
+   FUTURE CSS FEATURES:
+   ✅ @property — geanimeerde gauge fill
+   ✅ CSS Nesting — native geneste selectors
+   ✅ @scope — scoped styles
+   ✅ Container Queries — responsive
+   ✅ :where() — lage specificiteit
+   ✅ Individual Transforms — scale
+   ============================================================ */
+
+@scope (.gauge-card) {
+  :scope {
+    container-type: inline-size;
+    container-name: gauge-card;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    /* Match height of adjacent line chart card */
+    block-size: 100%;
+  }
+
+  & .gauge-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+  }
+
+  & .gauge-card__title-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  & .gauge-card__title {
+    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+  }
+
+  & .gauge-card__info {
+    color: var(--color-text-meta);
+    cursor: help;
+  }
+
+  & .gauge-card__menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: 28px;
+    block-size: 28px;
+    color: var(--color-text-meta);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+
+    &:hover {
+      background-color: var(--color-bg-surface-hover);
+      color: var(--color-text-primary);
+    }
+  }
+
+  & .gauge-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 1;
+    min-block-size: 0;
+  }
+
+  /* Gauge wrapper — fills available space, centers content */
+  & .gauge-card__gauge-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    inline-size: 100%;
+    min-block-size: 0;
+  }
+
+  /* SVG fills the wrapper */
+  & .gauge-card__gauge-wrapper svg {
+    flex: 1;
+    min-block-size: 0;
+    max-block-size: 100%;
+  }
+
+  /* Detail button — positioned absolutely, equal spacing below "from yesterday" */
+  /* 48% is at cy-8=102, "from yesterday" at cy+14=124, Detail at ~148 = equal ~24px gap */
+  & .gauge-card__detail-btn {
+    position: absolute;
+    inset-block-start: 62%;
+    inset-inline-start: 50%;
+    translate: -50% 0;
+    padding: var(--space-1) var(--space-4);
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-accent-primary);
+    background-color: var(--color-accent-primary-light);
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), color var(--transition-fast), scale var(--transition-fast);
+    white-space: nowrap;
+
+    &:hover {
+      background-color: var(--color-accent-primary);
+      color: var(--color-text-on-accent);
+      scale: 1.05;
+    }
+  }
+
+  & .gauge-card__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  & .gauge-card__legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--font-size-meta);
+    color: var(--color-text-meta);
+  }
+
+  & .gauge-card__legend-dot {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: var(--radius-full);
+
+    &:where(.gauge-card__legend-dot--profit) {
+      background-color: var(--color-chart-profit);
+    }
+    &:where(.gauge-card__legend-dot--today) {
+      background-color: var(--color-chart-profit-today);
+    }
+    &:where(.gauge-card__legend-dot--week) {
+      background-color: var(--color-chart-for-week);
+    }
+  }
+}
+
+/* ✅ @property — geanimeerde gauge */
+@property --gauge-fill {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+.gauge-fill {
+  animation: gaugeFill 1.2s var(--ease-spring) forwards;
+}
+
+@keyframes gaugeFill {
+  from {
+    stroke-dasharray: 0 9999;
+  }
+}
+
+@container gauge-card (max-width: 300px) {
+  .gauge-card__legend {
+    flex-direction: column;
+    align-items: center;
+  }
+}

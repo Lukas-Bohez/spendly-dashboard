@@ -1,0 +1,24 @@
+/* SystemMonitor deelt stijlen via ActivityTimeline.css (reeds geïmporteerd in App.jsx) */
+
+/* Status badge */
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-full);
+}
+
+.status-badge--online {
+  background-color: var(--color-status-success-bg);
+  color: var(--color-status-success);
+}
+
+.status-badge__dot {
+  inline-size: 6px;
+  block-size: 6px;
+  border-radius: var(--radius-full);
+  background-color: currentColor;
+}
